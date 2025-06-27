@@ -8,6 +8,6 @@
   "main_file": "VanillaRemade.lua",
   "priority": 0,
   "badge_colour": "F4A6C7",
-  "version": "0.5.0",
-  "dependencies": ["Steamodded (>=1.0.0~BETA-0614a)"]
+  "version": "0.5.1",
+  "dependencies": ["Steamodded (>=1.0.0~BETA-0624a)"]
 }

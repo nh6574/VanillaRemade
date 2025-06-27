@@ -620,10 +620,11 @@ SMODS.Consumable {
     pos = { x = 0, y = 1 },
     config = { extra = { odds = 4 } },
     loc_vars = function(self, info_queue, card)
-        return { vars = { G.GAME.probabilities.normal, card.ability.extra.odds } }
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds)
+        return { vars = { numerator, denominator } }
     end,
     use = function(self, card, area, copier)
-        if pseudorandom('vremade_wheel_of_fortune') < G.GAME.probabilities.normal / card.ability.extra.odds then
+        if SMODS.pseudorandom_probability(card, 'vremade_wheel_of_fortune', 1, card.ability.extra.odds) then
             local editionless_jokers = SMODS.Edition:get_edition_cards(G.jokers, true)
 
             local eligible_card = pseudorandom_element(editionless_jokers, 'vremade_wheel_of_fortune')

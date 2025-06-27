@@ -235,7 +235,7 @@ return {
             bl_vremade_wheel = {
                 name = "The Wheel",
                 text = {
-                    "#1# in 7 cards get",
+                    "#1# in #2# cards get",
                     "drawn face down",
                 },
             },
@@ -455,10 +455,10 @@ return {
             m_vremade_lucky = {
                 name = "Lucky Card",
                 text = {
-                    "{C:green}#1# in #3#{} chance",
-                    "for {C:mult}+#2#{} Mult",
-                    "{C:green}#1# in #5#{} chance",
-                    "to win {C:money}$#4#",
+                    "{C:green}#1# in #4#{} chance",
+                    "for {C:mult}+#3#{} Mult",
+                    "{C:green}#2# in #6#{} chance",
+                    "to win {C:money}$#5#",
                 },
             },
             m_vremade_mult = {

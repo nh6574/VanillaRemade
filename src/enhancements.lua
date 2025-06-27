@@ -32,10 +32,12 @@ SMODS.Enhancement {
     config = { Xmult = 2, extra = { odds = 4 } },
     shatters = true,
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.Xmult, G.GAME.probabilities.normal, card.ability.extra.odds } }
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds)
+        return { vars = { card.ability.Xmult, numerator, denominator } }
     end,
     calculate = function(self, card, context)
-        if context.destroy_card and context.cardarea == G.play and context.destroy_card == card and pseudorandom('glass') < G.GAME.probabilities.normal / card.ability.extra.odds then
+        if context.destroy_card and context.cardarea == G.play and context.destroy_card == card and
+            SMODS.pseudorandom_probability(card, 'vremade_glass', 1, card.ability.extra.odds) then
             return { remove = true }
         end
     end,
@@ -82,16 +84,19 @@ SMODS.Enhancement {
     -- We can't use 'mult' or 'p_dollars' outside of 'extra' here because they would be scored unconditionally if we did
     config = { extra = { mult = 20, dollars = 20, mult_odds = 5, dollars_odds = 15 } },
     loc_vars = function(self, info_queue, card)
-        return { vars = { G.GAME.probabilities.normal, card.ability.extra.mult, card.ability.extra.mult_odds, card.ability.extra.dollars, card.ability.extra.dollars_odds } }
+        local mult_numerator, mult_denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.mult_odds)
+        local dollars_numerator, dollars_denominator = SMODS.get_probability_vars(card, 1,
+            card.ability.extra.dollars_odds)
+        return { vars = { mult_numerator, dollars_numerator, card.ability.extra.mult, mult_denominator, card.ability.extra.dollars, dollars_denominator } }
     end,
     calculate = function(self, card, context)
         if context.main_scoring and context.cardarea == G.play then
             local ret = {}
-            if pseudorandom('lucky_mult') < G.GAME.probabilities.normal / card.ability.extra.mult_odds then
+            if SMODS.pseudorandom_probability(card, 'vremade_lucky_mult', 1, card.ability.extra.mult_odds) then
                 card.lucky_trigger = true
                 ret.mult = card.ability.extra.mult
             end
-            if pseudorandom('lucky_money') < G.GAME.probabilities.normal / card.ability.extra.dollars_odds then
+            if SMODS.pseudorandom_probability(card, 'vremade_lucky_money', 1, card.ability.extra.dollars_odds) then
                 card.lucky_trigger = true
                 ret.dollars = card.ability.extra.dollars
             end

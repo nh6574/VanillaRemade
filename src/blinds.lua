@@ -155,7 +155,8 @@ SMODS.Blind {
     boss = { min = 2 },
     boss_colour = HEX("50bf7c"),
     loc_vars = function(self)
-        return { vars = { G.GAME.probabilities.normal } }
+        local numerator, denominator = SMODS.get_probability_vars(self, 1, 7)
+        return { vars = { numerator, denominator } }
     end,
     collection_loc_vars = function(self)
         return { vars = { '1' } }
@@ -163,7 +164,7 @@ SMODS.Blind {
     calculate = function(self, blind, context)
         if not blind.disabled then
             if context.stay_flipped and context.to_area == G.hand and
-                pseudorandom('vremade_wheel') < G.GAME.probabilities.normal / 7 then
+                SMODS.pseudorandom_probability(blind, 'vremade_wheel', 1, 7) then
                 return {
                     stay_flipped = true
                 }
