@@ -1319,7 +1319,7 @@ return {
                     "if chips scored",
                     "are at least {C:attention}25%",
                     "of required chips",
-                    "{S:1.1,C:red,E:2}self destructs{}",
+                    "{C:red,E:2}self destructs{}",
                 },
                 unlock = {
                     "Lose {C:attention,E:1}#1#{} runs",
@@ -2144,7 +2144,7 @@ return {
             c_vremade_ceres = {
                 name = "Ceres",
                 text = {
-                    "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up",
+                    "({V:1}lvl.#1#{}) Level up",
                     "{C:attention}#2#",
                     "{C:mult}+#3#{} Mult and",
                     "{C:chips}+#4#{} chips",
@@ -2153,7 +2153,7 @@ return {
             c_vremade_earth = {
                 name = "Earth",
                 text = {
-                    "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up",
+                    "({V:1}lvl.#1#{}) Level up",
                     "{C:attention}#2#",
                     "{C:mult}+#3#{} Mult and",
                     "{C:chips}+#4#{} chips",
@@ -2162,7 +2162,7 @@ return {
             c_vremade_eris = {
                 name = "Eris",
                 text = {
-                    "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up",
+                    "({V:1}lvl.#1#{}) Level up",
                     "{C:attention}#2#",
                     "{C:mult}+#3#{} Mult and",
                     "{C:chips}+#4#{} chips",
@@ -2171,7 +2171,7 @@ return {
             c_vremade_jupiter = {
                 name = "Jupiter",
                 text = {
-                    "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up",
+                    "({V:1}lvl.#1#{}) Level up",
                     "{C:attention}#2#",
                     "{C:mult}+#3#{} Mult and",
                     "{C:chips}+#4#{} chips",
@@ -2180,7 +2180,7 @@ return {
             c_vremade_mars = {
                 name = "Mars",
                 text = {
-                    "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up",
+                    "({V:1}lvl.#1#{}) Level up",
                     "{C:attention}#2#",
                     "{C:mult}+#3#{} Mult and",
                     "{C:chips}+#4#{} chips",
@@ -2189,7 +2189,7 @@ return {
             c_vremade_mercury = {
                 name = "Mercury",
                 text = {
-                    "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up",
+                    "({V:1}lvl.#1#{}) Level up",
                     "{C:attention}#2#",
                     "{C:mult}+#3#{} Mult and",
                     "{C:chips}+#4#{} chips",
@@ -2198,7 +2198,7 @@ return {
             c_vremade_neptune = {
                 name = "Neptune",
                 text = {
-                    "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up",
+                    "({V:1}lvl.#1#{}) Level up",
                     "{C:attention}#2#",
                     "{C:mult}+#3#{} Mult and",
                     "{C:chips}+#4#{} chips",
@@ -2207,7 +2207,7 @@ return {
             c_vremade_planet_x = {
                 name = "Planet X",
                 text = {
-                    "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up",
+                    "({V:1}lvl.#1#{}) Level up",
                     "{C:attention}#2#",
                     "{C:mult}+#3#{} Mult and",
                     "{C:chips}+#4#{} chips",
@@ -2216,7 +2216,7 @@ return {
             c_vremade_pluto = {
                 name = "Pluto",
                 text = {
-                    "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up",
+                    "({V:1}lvl.#1#{}) Level up",
                     "{C:attention}#2#",
                     "{C:mult}+#3#{} Mult and",
                     "{C:chips}+#4#{} chips",
@@ -2225,7 +2225,7 @@ return {
             c_vremade_saturn = {
                 name = "Saturn",
                 text = {
-                    "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up",
+                    "({V:1}lvl.#1#{}) Level up",
                     "{C:attention}#2#",
                     "{C:mult}+#3#{} Mult and",
                     "{C:chips}+#4#{} chips",
@@ -2234,7 +2234,7 @@ return {
             c_vremade_uranus = {
                 name = "Uranus",
                 text = {
-                    "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up",
+                    "({V:1}lvl.#1#{}) Level up",
                     "{C:attention}#2#",
                     "{C:mult}+#3#{} Mult and",
                     "{C:chips}+#4#{} chips",
@@ -2243,7 +2243,7 @@ return {
             c_vremade_venus = {
                 name = "Venus",
                 text = {
-                    "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up",
+                    "({V:1}lvl.#1#{}) Level up",
                     "{C:attention}#2#",
                     "{C:mult}+#3#{} Mult and",
                     "{C:chips}+#4#{} chips",
