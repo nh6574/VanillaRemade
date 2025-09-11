@@ -190,6 +190,11 @@ SMODS.Consumable {
                 colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
             }
         }
+    end,
+    set_card_type_badge = function(self, card, badges)
+        badges[#badges + 1] = create_badge(localize('k_dwarf_planet'),
+            get_type_colour(card.config.center or card.config, card), SMODS.ConsumableTypes.vremade_Planet.text_colour,
+            1.2)
     end
 }
 
@@ -210,6 +215,11 @@ SMODS.Consumable {
                 colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
             }
         }
+    end,
+    set_card_type_badge = function(self, card, badges)
+        badges[#badges + 1] = create_badge(localize('k_planet_q'),
+            get_type_colour(card.config.center or card.config, card), SMODS.ConsumableTypes.vremade_Planet.text_colour,
+            1.2)
     end
 }
 
@@ -230,6 +240,11 @@ SMODS.Consumable {
                 colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
             }
         }
+    end,
+    set_card_type_badge = function(self, card, badges)
+        badges[#badges + 1] = create_badge(localize('k_dwarf_planet'),
+            get_type_colour(card.config.center or card.config, card), SMODS.ConsumableTypes.vremade_Planet.text_colour,
+            1.2)
     end
 }
 
@@ -250,5 +265,10 @@ SMODS.Consumable {
                 colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
             }
         }
+    end,
+    set_card_type_badge = function(self, card, badges)
+        badges[#badges + 1] = create_badge(localize('k_dwarf_planet'),
+            get_type_colour(card.config.center or card.config, card), SMODS.ConsumableTypes.vremade_Planet.text_colour,
+            1.2)
     end
 }
