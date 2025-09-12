@@ -22,7 +22,7 @@ SMODS.Seal {
     pos = { x = 6, y = 4 },
     badge_colour = G.C.BLUE,
     calculate = function(self, card, context)
-        if context.end_of_round and context.cardarea == G.hand and context.other_card == card and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+        if context.playing_card_end_of_round and context.cardarea == G.hand and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
             G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
             G.E_MANAGER:add_event(Event({
                 trigger = 'before',
