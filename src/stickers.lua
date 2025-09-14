@@ -1,7 +1,5 @@
 -- Derived from SMODS code
 
--- Eternal's functionality is handled in a variety of locations, typically in places
--- where card destroying can happen
 SMODS.Sticker {
     key = "eternal",
     badge_colour = HEX 'c75985',
@@ -10,6 +8,11 @@ SMODS.Sticker {
         return G.GAME.modifiers.enable_eternals_in_shop and not card.perishable and card.config.center.eternal_compat
     end,
 }
+
+local smods_is_eternal_ref = SMODS.is_eternal
+function SMODS.is_eternal(card, trigger)
+    return card.ability.vremade_eternal or smods_is_eternal_ref(card, trigger)
+end
 
 SMODS.Sticker {
     key = "perishable",

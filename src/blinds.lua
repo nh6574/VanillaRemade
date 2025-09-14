@@ -542,8 +542,8 @@ SMODS.Blind {
         if not blind.disabled then
             if context.modify_hand then
                 blind.triggered = true -- This won't trigger Matador in this context due to a Vanilla bug (a workaround is setting it in context.debuff_hand)
-                mult = math.max(math.floor(mult * 0.5 + 0.5), 1)
-                hand_chips = math.max(math.floor(hand_chips * 0.5 + 0.5), 0)
+                mult = mod_mult(math.max(math.floor(mult * 0.5 + 0.5), 1))
+                hand_chips = mod_chips(math.max(math.floor(hand_chips * 0.5 + 0.5), 0))
                 update_hand_text({ sound = 'chips2', modded = true }, { chips = hand_chips, mult = mult })
             end
         end

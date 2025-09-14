@@ -597,7 +597,7 @@ SMODS.Voucher {
     redeem = function(self, card)
         G.E_MANAGER:add_event(Event({
             func = function()
-                G.GAME.edition_rate = card.ability.extra.rate
+                G.GAME.playing_card_rate = card.ability.extra.rate
                 return true
             end
         }))
@@ -618,7 +618,7 @@ SMODS.Voucher {
     redeem = function(self, card)
         G.E_MANAGER:add_event(Event({
             func = function()
-                G.GAME.edition_rate = card.ability.extra.rate
+                G.GAME.playing_card_rate = card.ability.extra.rate
                 return true
             end
         }))
