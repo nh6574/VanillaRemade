@@ -35,6 +35,7 @@ SMODS.Challenge {
         { id = 'j_shortcut',     eternal = true },
     },
     deck = {
+        type = 'Challenge Deck',
         cards = {
             { s = 'C', r = 'K' },
             { s = 'C', r = 'K' },
@@ -146,12 +147,13 @@ SMODS.Challenge {
         }
     },
     deck = {
+        type = 'Challenge Deck',
         no_ranks = {
-            { id = 'T' },
-            { id = 'J' },
-            { id = 'Q' },
-            { id = 'K' },
-            { id = 'A' },
+            T = true,
+            J = true,
+            Q = true,
+            K = true,
+            A = true,
         }
     }
 }
@@ -204,6 +206,7 @@ SMODS.Challenge {
         { id = 'j_marble', eternal = true },
     },
     deck = {
+        type = 'Challenge Deck',
         cards = {
             { s = 'C', r = 'A' },
             { s = 'D', r = 'A' },
@@ -270,6 +273,7 @@ SMODS.Challenge {
         },
     },
     deck = {
+        type = 'Challenge Deck',
         seal = 'Red'
     }
 }
@@ -367,6 +371,7 @@ SMODS.Challenge {
         }
     },
     deck = {
+        type = 'Challenge Deck',
         enhancement = 'm_glass'
     }
 }
