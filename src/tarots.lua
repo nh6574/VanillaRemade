@@ -110,7 +110,7 @@ SMODS.Consumable {
                 trigger = 'after',
                 delay = 0.1,
                 func = function()
-                    G.hand.highlighted[i]:set_ability(G.P_CENTERS[card.ability.mod_conv])
+                    G.hand.highlighted[i]:set_ability(card.ability.mod_conv)
                     return true
                 end
             }))
@@ -217,7 +217,7 @@ SMODS.Consumable {
                 trigger = 'after',
                 delay = 0.1,
                 func = function()
-                    G.hand.highlighted[i]:set_ability(G.P_CENTERS[card.ability.mod_conv])
+                    G.hand.highlighted[i]:set_ability(card.ability.mod_conv)
                     return true
                 end
             }))
@@ -324,7 +324,7 @@ SMODS.Consumable {
                 trigger = 'after',
                 delay = 0.1,
                 func = function()
-                    G.hand.highlighted[i]:set_ability(G.P_CENTERS[card.ability.mod_conv])
+                    G.hand.highlighted[i]:set_ability(card.ability.mod_conv)
                     return true
                 end
             }))
@@ -400,7 +400,7 @@ SMODS.Consumable {
                 trigger = 'after',
                 delay = 0.1,
                 func = function()
-                    G.hand.highlighted[i]:set_ability(G.P_CENTERS[card.ability.mod_conv])
+                    G.hand.highlighted[i]:set_ability(card.ability.mod_conv)
                     return true
                 end
             }))
@@ -476,7 +476,7 @@ SMODS.Consumable {
                 trigger = 'after',
                 delay = 0.1,
                 func = function()
-                    G.hand.highlighted[i]:set_ability(G.P_CENTERS[card.ability.mod_conv])
+                    G.hand.highlighted[i]:set_ability(card.ability.mod_conv)
                     return true
                 end
             }))
@@ -552,7 +552,7 @@ SMODS.Consumable {
                 trigger = 'after',
                 delay = 0.1,
                 func = function()
-                    G.hand.highlighted[i]:set_ability(G.P_CENTERS[card.ability.mod_conv])
+                    G.hand.highlighted[i]:set_ability(card.ability.mod_conv)
                     return true
                 end
             }))
@@ -956,7 +956,7 @@ SMODS.Consumable {
                 trigger = 'after',
                 delay = 0.1,
                 func = function()
-                    G.hand.highlighted[i]:set_ability(G.P_CENTERS[card.ability.mod_conv])
+                    G.hand.highlighted[i]:set_ability(card.ability.mod_conv)
                     return true
                 end
             }))
@@ -1032,7 +1032,7 @@ SMODS.Consumable {
                 trigger = 'after',
                 delay = 0.1,
                 func = function()
-                    G.hand.highlighted[i]:set_ability(G.P_CENTERS[card.ability.mod_conv])
+                    G.hand.highlighted[i]:set_ability(card.ability.mod_conv)
                     return true
                 end
             }))
