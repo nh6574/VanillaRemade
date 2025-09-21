@@ -1,5 +1,5 @@
 -- This defines a new type of consumable with key "vremade_Spectral",
--- if you want to create a regular Tarot ignore this and use set = "Spectral"
+-- if you want to create a regular Spectral ignore this and use set = "Spectral"
 SMODS.ConsumableType {
     key = 'vremade_Spectral',
     default = 'vremade_familiar',
