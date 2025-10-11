@@ -172,7 +172,8 @@ SMODS.Consumable {
         delay(0.6)
     end,
     can_use = function(self, card)
-        return G.consumeables and #G.consumeables.cards < G.consumeables.config.card_limit
+        return G.consumeables and #G.consumeables.cards < G.consumeables.config.card_limit or
+            (card.area == G.consumeables)
     end
 }
 
@@ -279,7 +280,8 @@ SMODS.Consumable {
         delay(0.6)
     end,
     can_use = function(self, card)
-        return G.consumeables and #G.consumeables.cards < G.consumeables.config.card_limit
+        return (G.consumeables and #G.consumeables.cards < G.consumeables.config.card_limit) or
+            (card.area == G.consumeables)
     end
 }
 
