@@ -221,7 +221,7 @@ SMODS.Back {
     --[[
     apply = function(self, back)
         -- Apply the spectral rate
-        G.GAME.spectral_rate = self.config.extra.spectral_rate
+        G.GAME.spectral_rate = self.config.spectral_rate
 
         -- Apply the consumables
         delay(0.4)
