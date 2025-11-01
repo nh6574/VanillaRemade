@@ -227,7 +227,7 @@ SMODS.Back {
         delay(0.4)
         G.E_MANAGER:add_event(Event({
             func = function()
-                for k, v in ipairs(self.config.extra.consumables) do
+                for k, v in ipairs(self.config.consumables) do
                     SMODS.add_card({ key = v })
                 end
                 return true
