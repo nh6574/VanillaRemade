@@ -6,7 +6,7 @@ SMODS.Booster {
     cost = 4,
     pos = { x = 0, y = 0 },
     config = { extra = 3, choose = 1 },
-    group_key = "k_arcana_pack",
+    group_key = "k_arcana_pack", -- Delete this if you're using `group_name` in `loc_txt`
     draw_hand = true,
     loc_vars = function(self, info_queue, card)
         local cfg = (card and card.ability) or self.config
@@ -66,7 +66,7 @@ SMODS.Booster {
     cost = 4,
     pos = { x = 1, y = 0 },
     config = { extra = 3, choose = 1 },
-    group_key = "k_arcana_pack",
+    group_key = "k_arcana_pack", -- Delete this if you're using `group_name` in `loc_txt`
     draw_hand = true,
     loc_vars = function(self, info_queue, card)
         local cfg = (card and card.ability) or self.config
@@ -126,7 +126,7 @@ SMODS.Booster {
     cost = 4,
     pos = { x = 2, y = 0 },
     config = { extra = 3, choose = 1 },
-    group_key = "k_arcana_pack",
+    group_key = "k_arcana_pack", -- Delete this if you're using `group_name` in `loc_txt`
     draw_hand = true,
     loc_vars = function(self, info_queue, card)
         local cfg = (card and card.ability) or self.config
@@ -186,7 +186,7 @@ SMODS.Booster {
     cost = 4,
     pos = { x = 3, y = 0 },
     config = { extra = 3, choose = 1 },
-    group_key = "k_arcana_pack",
+    group_key = "k_arcana_pack", -- Delete this if you're using `group_name` in `loc_txt`
     draw_hand = true,
     loc_vars = function(self, info_queue, card)
         local cfg = (card and card.ability) or self.config
@@ -246,7 +246,7 @@ SMODS.Booster {
     cost = 6,
     pos = { x = 0, y = 2 },
     config = { extra = 5, choose = 1 },
-    group_key = "k_arcana_pack",
+    group_key = "k_arcana_pack", -- Delete this if you're using `group_name` in `loc_txt`
     draw_hand = true,
     loc_vars = function(self, info_queue, card)
         local cfg = (card and card.ability) or self.config
@@ -306,7 +306,7 @@ SMODS.Booster {
     cost = 6,
     pos = { x = 1, y = 2 },
     config = { extra = 5, choose = 1 },
-    group_key = "k_arcana_pack",
+    group_key = "k_arcana_pack", -- Delete this if you're using `group_name` in `loc_txt`
     draw_hand = true,
     loc_vars = function(self, info_queue, card)
         local cfg = (card and card.ability) or self.config
@@ -366,7 +366,7 @@ SMODS.Booster {
     cost = 8,
     pos = { x = 2, y = 2 },
     config = { extra = 5, choose = 2 },
-    group_key = "k_arcana_pack",
+    group_key = "k_arcana_pack", -- Delete this if you're using `group_name` in `loc_txt`
     draw_hand = true,
     loc_vars = function(self, info_queue, card)
         local cfg = (card and card.ability) or self.config
@@ -426,7 +426,7 @@ SMODS.Booster {
     cost = 8,
     pos = { x = 3, y = 2 },
     config = { extra = 5, choose = 2 },
-    group_key = "k_arcana_pack",
+    group_key = "k_arcana_pack", -- Delete this if you're using `group_name` in `loc_txt`
     draw_hand = true,
     loc_vars = function(self, info_queue, card)
         local cfg = (card and card.ability) or self.config
@@ -488,7 +488,7 @@ SMODS.Booster {
     cost = 4,
     pos = { x = 0, y = 1 },
     config = { extra = 3, choose = 1 },
-    group_key = "k_celestial_pack",
+    group_key = "k_celestial_pack", -- Delete this if you're using `group_name` in `loc_txt`
     loc_vars = function(self, info_queue, card)
         local cfg = (card and card.ability) or self.config
         return {
@@ -569,7 +569,7 @@ SMODS.Booster {
     cost = 4,
     pos = { x = 1, y = 1 },
     config = { extra = 3, choose = 1 },
-    group_key = "k_celestial_pack",
+    group_key = "k_celestial_pack", -- Delete this if you're using `group_name` in `loc_txt`
     loc_vars = function(self, info_queue, card)
         local cfg = (card and card.ability) or self.config
         return {
@@ -650,7 +650,7 @@ SMODS.Booster {
     cost = 4,
     pos = { x = 2, y = 1 },
     config = { extra = 3, choose = 1 },
-    group_key = "k_celestial_pack",
+    group_key = "k_celestial_pack", -- Delete this if you're using `group_name` in `loc_txt`
     loc_vars = function(self, info_queue, card)
         local cfg = (card and card.ability) or self.config
         return {
@@ -731,7 +731,7 @@ SMODS.Booster {
     cost = 4,
     pos = { x = 3, y = 1 },
     config = { extra = 3, choose = 1 },
-    group_key = "k_celestial_pack",
+    group_key = "k_celestial_pack", -- Delete this if you're using `group_name` in `loc_txt`
     loc_vars = function(self, info_queue, card)
         local cfg = (card and card.ability) or self.config
         return {
@@ -812,7 +812,7 @@ SMODS.Booster {
     cost = 6,
     pos = { x = 0, y = 3 },
     config = { extra = 5, choose = 1 },
-    group_key = "k_celestial_pack",
+    group_key = "k_celestial_pack", -- Delete this if you're using `group_name` in `loc_txt`
     loc_vars = function(self, info_queue, card)
         local cfg = (card and card.ability) or self.config
         return {
@@ -893,7 +893,7 @@ SMODS.Booster {
     cost = 6,
     pos = { x = 1, y = 3 },
     config = { extra = 5, choose = 1 },
-    group_key = "k_celestial_pack",
+    group_key = "k_celestial_pack", -- Delete this if you're using `group_name` in `loc_txt`
     loc_vars = function(self, info_queue, card)
         local cfg = (card and card.ability) or self.config
         return {
@@ -974,7 +974,7 @@ SMODS.Booster {
     cost = 8,
     pos = { x = 2, y = 3 },
     config = { extra = 5, choose = 2 },
-    group_key = "k_celestial_pack",
+    group_key = "k_celestial_pack", -- Delete this if you're using `group_name` in `loc_txt`
     loc_vars = function(self, info_queue, card)
         local cfg = (card and card.ability) or self.config
         return {
@@ -1055,7 +1055,7 @@ SMODS.Booster {
     cost = 8,
     pos = { x = 3, y = 3 },
     config = { extra = 5, choose = 2 },
-    group_key = "k_celestial_pack",
+    group_key = "k_celestial_pack", -- Delete this if you're using `group_name` in `loc_txt`
     loc_vars = function(self, info_queue, card)
         local cfg = (card and card.ability) or self.config
         return {
@@ -1138,7 +1138,7 @@ SMODS.Booster {
     cost = 4,
     pos = { x = 0, y = 4 },
     config = { extra = 2, choose = 1 },
-    group_key = "k_spectral_pack",
+    group_key = "k_spectral_pack", -- Delete this if you're using `group_name` in `loc_txt`
     draw_hand = true,
     loc_vars = function(self, info_queue, card)
         local cfg = (card and card.ability) or self.config
@@ -1185,7 +1185,7 @@ SMODS.Booster {
     cost = 4,
     pos = { x = 1, y = 4 },
     config = { extra = 2, choose = 1 },
-    group_key = "k_spectral_pack",
+    group_key = "k_spectral_pack", -- Delete this if you're using `group_name` in `loc_txt`
     draw_hand = true,
     loc_vars = function(self, info_queue, card)
         local cfg = (card and card.ability) or self.config
@@ -1232,7 +1232,7 @@ SMODS.Booster {
     cost = 6,
     pos = { x = 2, y = 4 },
     config = { extra = 4, choose = 1 },
-    group_key = "k_spectral_pack",
+    group_key = "k_spectral_pack", -- Delete this if you're using `group_name` in `loc_txt`
     draw_hand = true,
     loc_vars = function(self, info_queue, card)
         local cfg = (card and card.ability) or self.config
@@ -1279,7 +1279,7 @@ SMODS.Booster {
     cost = 8,
     pos = { x = 3, y = 4 },
     config = { extra = 4, choose = 2 },
-    group_key = "k_spectral_pack",
+    group_key = "k_spectral_pack", -- Delete this if you're using `group_name` in `loc_txt`
     draw_hand = true,
     loc_vars = function(self, info_queue, card)
         local cfg = (card and card.ability) or self.config
@@ -1328,7 +1328,7 @@ SMODS.Booster {
     cost = 4,
     pos = { x = 0, y = 6 },
     config = { extra = 3, choose = 1 },
-    group_key = "k_standard_pack",
+    group_key = "k_standard_pack", -- Delete this if you're using `group_name` in `loc_txt`
     loc_vars = function(self, info_queue, card)
         local cfg = (card and card.ability) or self.config
         return {
@@ -1377,7 +1377,7 @@ SMODS.Booster {
     cost = 4,
     pos = { x = 1, y = 6 },
     config = { extra = 3, choose = 1 },
-    group_key = "k_standard_pack",
+    group_key = "k_standard_pack", -- Delete this if you're using `group_name` in `loc_txt`
     loc_vars = function(self, info_queue, card)
         local cfg = (card and card.ability) or self.config
         return {
@@ -1426,7 +1426,7 @@ SMODS.Booster {
     cost = 4,
     pos = { x = 2, y = 6 },
     config = { extra = 3, choose = 1 },
-    group_key = "k_standard_pack",
+    group_key = "k_standard_pack", -- Delete this if you're using `group_name` in `loc_txt`
     loc_vars = function(self, info_queue, card)
         local cfg = (card and card.ability) or self.config
         return {
@@ -1475,7 +1475,7 @@ SMODS.Booster {
     cost = 4,
     pos = { x = 3, y = 6 },
     config = { extra = 3, choose = 1 },
-    group_key = "k_standard_pack",
+    group_key = "k_standard_pack", -- Delete this if you're using `group_name` in `loc_txt`
     loc_vars = function(self, info_queue, card)
         local cfg = (card and card.ability) or self.config
         return {
@@ -1524,7 +1524,7 @@ SMODS.Booster {
     cost = 6,
     pos = { x = 0, y = 7 },
     config = { extra = 5, choose = 1 },
-    group_key = "k_standard_pack",
+    group_key = "k_standard_pack", -- Delete this if you're using `group_name` in `loc_txt`
     loc_vars = function(self, info_queue, card)
         local cfg = (card and card.ability) or self.config
         return {
@@ -1573,7 +1573,7 @@ SMODS.Booster {
     cost = 6,
     pos = { x = 1, y = 7 },
     config = { extra = 5, choose = 1 },
-    group_key = "k_standard_pack",
+    group_key = "k_standard_pack", -- Delete this if you're using `group_name` in `loc_txt`
     loc_vars = function(self, info_queue, card)
         local cfg = (card and card.ability) or self.config
         return {
@@ -1622,7 +1622,7 @@ SMODS.Booster {
     cost = 8,
     pos = { x = 2, y = 7 },
     config = { extra = 5, choose = 2 },
-    group_key = "k_standard_pack",
+    group_key = "k_standard_pack", -- Delete this if you're using `group_name` in `loc_txt`
     loc_vars = function(self, info_queue, card)
         local cfg = (card and card.ability) or self.config
         return {
@@ -1671,7 +1671,7 @@ SMODS.Booster {
     cost = 8,
     pos = { x = 3, y = 7 },
     config = { extra = 5, choose = 2 },
-    group_key = "k_standard_pack",
+    group_key = "k_standard_pack", -- Delete this if you're using `group_name` in `loc_txt`
     loc_vars = function(self, info_queue, card)
         local cfg = (card and card.ability) or self.config
         return {
@@ -1722,7 +1722,7 @@ SMODS.Booster {
     cost = 4,
     pos = { x = 0, y = 8 },
     config = { extra = 2, choose = 1 },
-    group_key = "k_buffoon_pack",
+    group_key = "k_buffoon_pack", -- Delete this if you're using `group_name` in `loc_txt`
     loc_vars = function(self, info_queue, card)
         local cfg = (card and card.ability) or self.config
         return {
@@ -1746,7 +1746,7 @@ SMODS.Booster {
     cost = 4,
     pos = { x = 1, y = 8 },
     config = { extra = 2, choose = 1 },
-    group_key = "k_buffoon_pack",
+    group_key = "k_buffoon_pack", -- Delete this if you're using `group_name` in `loc_txt`
     loc_vars = function(self, info_queue, card)
         local cfg = (card and card.ability) or self.config
         return {
@@ -1770,7 +1770,7 @@ SMODS.Booster {
     cost = 6,
     pos = { x = 2, y = 8 },
     config = { extra = 4, choose = 1 },
-    group_key = "k_buffoon_pack",
+    group_key = "k_buffoon_pack", -- Delete this if you're using `group_name` in `loc_txt`
     loc_vars = function(self, info_queue, card)
         local cfg = (card and card.ability) or self.config
         return {
@@ -1794,7 +1794,7 @@ SMODS.Booster {
     cost = 8,
     pos = { x = 3, y = 8 },
     config = { extra = 4, choose = 2 },
-    group_key = "k_buffoon_pack",
+    group_key = "k_buffoon_pack", -- Delete this if you're using `group_name` in `loc_txt`
     loc_vars = function(self, info_queue, card)
         local cfg = (card and card.ability) or self.config
         return {
