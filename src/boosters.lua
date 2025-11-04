@@ -12,7 +12,7 @@ SMODS.Booster {
         local cfg = (card and card.ability) or self.config
         return {
             vars = { cfg.choose, cfg.extra },
-            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end
+            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
     ease_background_colour = function(self)
@@ -72,7 +72,7 @@ SMODS.Booster {
         local cfg = (card and card.ability) or self.config
         return {
             vars = { cfg.choose, cfg.extra },
-            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end
+            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
     ease_background_colour = function(self)
@@ -132,7 +132,7 @@ SMODS.Booster {
         local cfg = (card and card.ability) or self.config
         return {
             vars = { cfg.choose, cfg.extra },
-            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end
+            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
     ease_background_colour = function(self)
@@ -192,7 +192,7 @@ SMODS.Booster {
         local cfg = (card and card.ability) or self.config
         return {
             vars = { cfg.choose, cfg.extra },
-            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end
+            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
     ease_background_colour = function(self)
@@ -252,7 +252,7 @@ SMODS.Booster {
         local cfg = (card and card.ability) or self.config
         return {
             vars = { cfg.choose, cfg.extra },
-            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end
+            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
     ease_background_colour = function(self)
@@ -312,7 +312,7 @@ SMODS.Booster {
         local cfg = (card and card.ability) or self.config
         return {
             vars = { cfg.choose, cfg.extra },
-            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end
+            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
     ease_background_colour = function(self)
@@ -372,7 +372,7 @@ SMODS.Booster {
         local cfg = (card and card.ability) or self.config
         return {
             vars = { cfg.choose, cfg.extra },
-            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end
+            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
     ease_background_colour = function(self)
@@ -432,7 +432,7 @@ SMODS.Booster {
         local cfg = (card and card.ability) or self.config
         return {
             vars = { cfg.choose, cfg.extra },
-            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end
+            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
     ease_background_colour = function(self)
@@ -493,7 +493,7 @@ SMODS.Booster {
         local cfg = (card and card.ability) or self.config
         return {
             vars = { cfg.choose, cfg.extra },
-            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end
+            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
     ease_background_colour = function(self)
@@ -574,7 +574,7 @@ SMODS.Booster {
         local cfg = (card and card.ability) or self.config
         return {
             vars = { cfg.choose, cfg.extra },
-            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end
+            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
     ease_background_colour = function(self)
@@ -655,7 +655,7 @@ SMODS.Booster {
         local cfg = (card and card.ability) or self.config
         return {
             vars = { cfg.choose, cfg.extra },
-            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end
+            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
     ease_background_colour = function(self)
@@ -736,7 +736,7 @@ SMODS.Booster {
         local cfg = (card and card.ability) or self.config
         return {
             vars = { cfg.choose, cfg.extra },
-            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end
+            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
     ease_background_colour = function(self)
@@ -817,7 +817,7 @@ SMODS.Booster {
         local cfg = (card and card.ability) or self.config
         return {
             vars = { cfg.choose, cfg.extra },
-            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end
+            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
     ease_background_colour = function(self)
@@ -898,7 +898,7 @@ SMODS.Booster {
         local cfg = (card and card.ability) or self.config
         return {
             vars = { cfg.choose, cfg.extra },
-            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end
+            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
     ease_background_colour = function(self)
@@ -979,7 +979,7 @@ SMODS.Booster {
         local cfg = (card and card.ability) or self.config
         return {
             vars = { cfg.choose, cfg.extra },
-            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end
+            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
     ease_background_colour = function(self)
@@ -1060,7 +1060,7 @@ SMODS.Booster {
         local cfg = (card and card.ability) or self.config
         return {
             vars = { cfg.choose, cfg.extra },
-            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end
+            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
     ease_background_colour = function(self)
@@ -1144,7 +1144,7 @@ SMODS.Booster {
         local cfg = (card and card.ability) or self.config
         return {
             vars = { cfg.choose, cfg.extra },
-            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end
+            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
     ease_background_colour = function(self)
@@ -1191,7 +1191,7 @@ SMODS.Booster {
         local cfg = (card and card.ability) or self.config
         return {
             vars = { cfg.choose, cfg.extra },
-            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end
+            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
     ease_background_colour = function(self)
@@ -1238,7 +1238,7 @@ SMODS.Booster {
         local cfg = (card and card.ability) or self.config
         return {
             vars = { cfg.choose, cfg.extra },
-            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end
+            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
     ease_background_colour = function(self)
@@ -1285,7 +1285,7 @@ SMODS.Booster {
         local cfg = (card and card.ability) or self.config
         return {
             vars = { cfg.choose, cfg.extra },
-            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end
+            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
     ease_background_colour = function(self)
@@ -1333,7 +1333,7 @@ SMODS.Booster {
         local cfg = (card and card.ability) or self.config
         return {
             vars = { cfg.choose, cfg.extra },
-            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end
+            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
     ease_background_colour = function(self)
@@ -1382,7 +1382,7 @@ SMODS.Booster {
         local cfg = (card and card.ability) or self.config
         return {
             vars = { cfg.choose, cfg.extra },
-            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end
+            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
     ease_background_colour = function(self)
@@ -1431,7 +1431,7 @@ SMODS.Booster {
         local cfg = (card and card.ability) or self.config
         return {
             vars = { cfg.choose, cfg.extra },
-            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end
+            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
     ease_background_colour = function(self)
@@ -1480,7 +1480,7 @@ SMODS.Booster {
         local cfg = (card and card.ability) or self.config
         return {
             vars = { cfg.choose, cfg.extra },
-            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end
+            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
     ease_background_colour = function(self)
@@ -1529,7 +1529,7 @@ SMODS.Booster {
         local cfg = (card and card.ability) or self.config
         return {
             vars = { cfg.choose, cfg.extra },
-            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end
+            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
     ease_background_colour = function(self)
@@ -1578,7 +1578,7 @@ SMODS.Booster {
         local cfg = (card and card.ability) or self.config
         return {
             vars = { cfg.choose, cfg.extra },
-            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end
+            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
     ease_background_colour = function(self)
@@ -1627,7 +1627,7 @@ SMODS.Booster {
         local cfg = (card and card.ability) or self.config
         return {
             vars = { cfg.choose, cfg.extra },
-            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end
+            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
     ease_background_colour = function(self)
@@ -1676,7 +1676,7 @@ SMODS.Booster {
         local cfg = (card and card.ability) or self.config
         return {
             vars = { cfg.choose, cfg.extra },
-            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end
+            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
     ease_background_colour = function(self)
@@ -1727,7 +1727,7 @@ SMODS.Booster {
         local cfg = (card and card.ability) or self.config
         return {
             vars = { cfg.choose, cfg.extra },
-            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end
+            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
     ease_background_colour = function(self)
@@ -1751,7 +1751,7 @@ SMODS.Booster {
         local cfg = (card and card.ability) or self.config
         return {
             vars = { cfg.choose, cfg.extra },
-            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end
+            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
     ease_background_colour = function(self)
@@ -1775,7 +1775,7 @@ SMODS.Booster {
         local cfg = (card and card.ability) or self.config
         return {
             vars = { cfg.choose, cfg.extra },
-            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end
+            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
     ease_background_colour = function(self)
@@ -1799,7 +1799,7 @@ SMODS.Booster {
         local cfg = (card and card.ability) or self.config
         return {
             vars = { cfg.choose, cfg.extra },
-            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end
+            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
     ease_background_colour = function(self)
