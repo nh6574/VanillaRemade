@@ -3027,8 +3027,6 @@ SMODS.Joker {
     end
 }
 
-------- WIP ----------------------------------------------------------------
-
 -- Golden Ticket
 SMODS.Joker {
     key = "ticket",
