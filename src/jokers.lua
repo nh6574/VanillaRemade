@@ -3760,7 +3760,11 @@ SMODS.Joker {
         for i = 1, #G.jokers.cards do
             if G.jokers.cards[i] == card then other_joker = G.jokers.cards[i + 1] end
         end
-        return SMODS.blueprint_effect(card, other_joker, context)
+        local ret = SMODS.blueprint_effect(card, other_joker, context)
+        if ret then
+            ret.colour = G.C.BLUE
+        end
+        return ret
     end,
     check_for_unlock = function(self, args)
         return args.type == 'win_custom'
