@@ -2,7 +2,7 @@
 -- if you want to create a regular Tarot ignore this and use set = "Tarot"
 SMODS.ConsumableType {
     key = 'vremade_Tarot',
-    default = 'c_vremade_fool',
+    default = 'c_vremade_strength',
     primary_colour = G.C.SET.Tarot,
     secondary_colour = G.C.SECONDARY_SET.Tarot,
     collection_rows = { 5, 6 },
@@ -906,7 +906,7 @@ SMODS.Consumable {
             func = function()
                 play_sound('timpani')
                 card:juice_up(0.3, 0.5)
-                ease_dollars(self.ability.money, true)
+                ease_dollars(card.ability.extra.money, true)
                 return true
             end
         }))

@@ -18,6 +18,7 @@ SMODS.Joker {
     rarity = 1,
     blueprint_compat = true,
     cost = 2,
+    discovered = true,
     config = { extra = { mult = 4 }, },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.mult } }
@@ -2457,7 +2458,7 @@ SMODS.Joker {
     calculate = function(self, card, context)
         if context.using_consumeable and not context.blueprint and context.consumeable.ability.set == "Tarot" then
             return {
-                message = localize { type = 'variable', key = 'a_mult', vars = { G.GAME.consumeable_usage_total.tarot } },
+                message = localize { type = 'variable', key = 'a_mult', vars = { G.GAME.consumeable_usage_total.tarot * card.ability.extra.mult } },
             }
         end
         if context.joker_main then
@@ -4010,7 +4011,7 @@ SMODS.Joker {
                 colour = G.C.RED
             }
         end
-        if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
+        if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint and card.ability.extra.xmult > 1 then
             card.ability.extra.xmult = 1
             return {
                 message = localize('k_reset'),
@@ -4223,17 +4224,16 @@ SMODS.Joker {
     end,
     config = { extra = { invis_rounds = 0, total_rounds = 2 } },
     loc_vars = function(self, info_queue, card)
-        local main_end
+        local main_end = {}
         if G.jokers and G.jokers.cards then
             for _, joker in ipairs(G.jokers.cards) do
                 if joker.edition and joker.edition.negative then
-                    main_end = {}
                     localize { type = 'other', key = 'remove_negative', nodes = main_end, vars = {} }
                     break
                 end
             end
         end
-        return { vars = { card.ability.extra.total_rounds, card.ability.extra.invis_rounds }, main_end = main_end }
+        return { vars = { card.ability.extra.total_rounds, card.ability.extra.invis_rounds }, main_end = main_end[1] }
     end,
     calculate = function(self, card, context)
         if context.selling_self and (card.ability.extra.invis_rounds >= card.ability.extra.total_rounds) and not context.blueprint then
@@ -4248,6 +4248,8 @@ SMODS.Joker {
                     local chosen_joker = pseudorandom_element(jokers, 'vremade_invisible')
                     local copied_joker = copy_card(chosen_joker, nil, nil, nil,
                         chosen_joker.edition and chosen_joker.edition.negative)
+                    if copied_joker.ability.invis_rounds then copied_joker.ability.invis_rounds = 0 end
+                    if type(copied_joker.ability.extra) == "table" and copied_joker.ability.extra.invis_rounds then copied_joker.ability.extra.invis_rounds = 0 end
                     copied_joker:add_to_deck()
                     G.jokers:emplace(copied_joker)
                     return { message = localize('k_duplicated_ex') }

@@ -59,6 +59,9 @@ SMODS.Tag {
                 tag:nope()
             end
         end
+    end,
+    in_pool = function(self, args)
+        return G.P_CENTERS["j_blueprint"].discovered
     end
 }
 
@@ -88,6 +91,9 @@ SMODS.Tag {
                 return true
             end
         end
+    end,
+    in_pool = function(self, args)
+        return G.P_CENTERS["e_negative"].discovered
     end
 }
 
@@ -116,6 +122,9 @@ SMODS.Tag {
                 return true
             end
         end
+    end,
+    in_pool = function(self, args)
+        return G.P_CENTERS["e_foil"].discovered
     end
 }
 
@@ -144,6 +153,9 @@ SMODS.Tag {
                 return true
             end
         end
+    end,
+    in_pool = function(self, args)
+        return G.P_CENTERS["e_holo"].discovered
     end
 }
 
@@ -172,6 +184,9 @@ SMODS.Tag {
                 return true
             end
         end
+    end,
+    in_pool = function(self, args)
+        return G.P_CENTERS["e_polychrome"].discovered
     end
 }
 

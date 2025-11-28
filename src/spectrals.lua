@@ -278,14 +278,11 @@ SMODS.Consumable {
         if (layer == 'card' or layer == 'both') and card.sprite_facing == 'front' then
             card.children.center:draw_shader('booster', nil, card.ARGS.send_to_shader)
         end
-    end
-    -- The config field already handles the functionality so it doesn't need to be implemented
-    -- The following is how the implementation would be
-    --[[
+    end,
     can_use = function(self, card)
-        return G.hand and #G.hand.highlighted <= card.config.max_highlighted and #G.hand.highlighted > 0
+        return G.hand and #G.hand.highlighted <= card.config.max_highlighted and #G.hand.highlighted > 0 and
+            (not G.hand.highlighted[1].edition)
     end
-    --]]
 }
 
 -- Wraith
@@ -549,6 +546,19 @@ SMODS.Consumable {
     key = 'ankh',
     set = 'vremade_Spectral',
     pos = { x = 0, y = 5 },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.e_negative
+        local main_end = {}
+        if G.jokers and G.jokers.cards then
+            for _, joker in ipairs(G.jokers.cards) do
+                if joker.edition and joker.edition.negative then
+                    localize { type = 'other', key = 'remove_negative', nodes = main_end, vars = {} }
+                    break
+                end
+            end
+        end
+        return { vars = { card.ability.extra.total_rounds, card.ability.extra.invis_rounds }, main_end = main_end[1] }
+    end,
     use = function(self, card, area, copier)
         local deletable_jokers = {}
         for _, joker in pairs(G.jokers.cards) do

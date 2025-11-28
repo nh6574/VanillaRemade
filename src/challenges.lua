@@ -490,6 +490,7 @@ SMODS.Challenge {
             { id = 'c_judgement' },
             { id = 'c_wraith' },
             { id = 'c_soul' },
+            { id = 'v_antimatter' },
             { id = 'p_buffoon_normal_1', ids = {
                 'p_buffoon_normal_1', 'p_buffoon_normal_2', 'p_buffoon_jumbo_1', 'p_buffoon_mega_1',
             }
