@@ -634,7 +634,7 @@ SMODS.Tag {
         if context.type == 'immediate' then
             local lock = tag.ID
             G.CONTROLLER.locks[lock] = true
-            SMODS.smart_level_up_hand(tag, tag.ability.orbital_hand, nil, tag.config.levels)
+            SMODS.upgrade_poker_hands({ from = tag, hands = { tag.ability.orbital_hand }, level_up = tag.config.levels })
             tag:yep('+', G.C.MONEY, function()
                 G.CONTROLLER.locks[lock] = nil
                 return true
