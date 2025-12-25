@@ -6,6 +6,4 @@ This is not meant to be a tutorial or explained example mod like [these ones](ht
 
 Please make sure to check the [SMODS documentation](https://github.com/Steamodded/smods/wiki) and [VanillaRemade wiki](https://github.com/nh6574/VanillaRemade/wiki) as well for more information and guides.
 
-As much of the code is inspired by Balatro's own code, this repository doesn't include a license.
-
 Please report any issues to <https://github.com/nh6574/VanillaRemade/issues>, thanks.
