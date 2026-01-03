@@ -263,7 +263,7 @@ SMODS.Consumable {
             trigger = 'after',
             delay = 0.4,
             func = function()
-                local edition = SMODS.poll_edition { key = "vremade_aura", guaranteed = true, no_neg = true, options = { 'e_polychrome', 'e_holo', 'e_foil' } }
+                local edition = SMODS.poll_edition { key = "vremade_aura", guaranteed = true, no_negative = true, options = { 'e_polychrome', 'e_holo', 'e_foil' } }
                 local aura_card = G.hand.highlighted[1]
                 aura_card:set_edition(edition, true)
                 card:juice_up(0.3, 0.5)
