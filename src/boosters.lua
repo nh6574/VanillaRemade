@@ -1355,7 +1355,7 @@ SMODS.Booster {
         G.booster_pack_sparkles:fade(1, 0)
     end,
     create_card = function(self, card, i)
-        local _edition = poll_edition('vremade_standard_edition' .. G.GAME.round_resets.ante, 2, true)
+        local _edition = SMODS.poll_edition { key = "vremade_standard_edition" .. G.GAME.round_resets.ante, mod = 2, no_neg = true }
         local _seal = SMODS.poll_seal({ mod = 10 })
         return {
             set = "Playing Card",
@@ -1404,7 +1404,7 @@ SMODS.Booster {
         G.booster_pack_sparkles:fade(1, 0)
     end,
     create_card = function(self, card, i)
-        local _edition = poll_edition('vremade_standard_edition' .. G.GAME.round_resets.ante, 2, true)
+        local _edition = SMODS.poll_edition { key = "vremade_standard_edition" .. G.GAME.round_resets.ante, mod = 2, no_neg = true }
         local _seal = SMODS.poll_seal({ mod = 10 })
         return {
             set = "Playing Card",
@@ -1453,7 +1453,7 @@ SMODS.Booster {
         G.booster_pack_sparkles:fade(1, 0)
     end,
     create_card = function(self, card, i)
-        local _edition = poll_edition('vremade_standard_edition' .. G.GAME.round_resets.ante, 2, true)
+        local _edition = SMODS.poll_edition { key = "vremade_standard_edition" .. G.GAME.round_resets.ante, mod = 2, no_neg = true }
         local _seal = SMODS.poll_seal({ mod = 10 })
         return {
             set = "Playing Card",
@@ -1502,7 +1502,7 @@ SMODS.Booster {
         G.booster_pack_sparkles:fade(1, 0)
     end,
     create_card = function(self, card, i)
-        local _edition = poll_edition('vremade_standard_edition' .. G.GAME.round_resets.ante, 2, true)
+        local _edition = SMODS.poll_edition { key = "vremade_standard_edition" .. G.GAME.round_resets.ante, mod = 2, no_neg = true }
         local _seal = SMODS.poll_seal({ mod = 10 })
         return {
             set = "Playing Card",
@@ -1551,7 +1551,7 @@ SMODS.Booster {
         G.booster_pack_sparkles:fade(1, 0)
     end,
     create_card = function(self, card, i)
-        local _edition = poll_edition('vremade_standard_edition' .. G.GAME.round_resets.ante, 2, true)
+        local _edition = SMODS.poll_edition { key = "vremade_standard_edition" .. G.GAME.round_resets.ante, mod = 2, no_neg = true }
         local _seal = SMODS.poll_seal({ mod = 10 })
         return {
             set = "Playing Card",
@@ -1600,7 +1600,7 @@ SMODS.Booster {
         G.booster_pack_sparkles:fade(1, 0)
     end,
     create_card = function(self, card, i)
-        local _edition = poll_edition('vremade_standard_edition' .. G.GAME.round_resets.ante, 2, true)
+        local _edition = SMODS.poll_edition { key = "vremade_standard_edition" .. G.GAME.round_resets.ante, mod = 2, no_neg = true }
         local _seal = SMODS.poll_seal({ mod = 10 })
         return {
             set = "Playing Card",
@@ -1649,7 +1649,7 @@ SMODS.Booster {
         G.booster_pack_sparkles:fade(1, 0)
     end,
     create_card = function(self, card, i)
-        local _edition = poll_edition('vremade_standard_edition' .. G.GAME.round_resets.ante, 2, true)
+        local _edition = SMODS.poll_edition { key = "vremade_standard_edition" .. G.GAME.round_resets.ante, mod = 2, no_neg = true }
         local _seal = SMODS.poll_seal({ mod = 10 })
         return {
             set = "Playing Card",
@@ -1698,7 +1698,7 @@ SMODS.Booster {
         G.booster_pack_sparkles:fade(1, 0)
     end,
     create_card = function(self, card, i)
-        local _edition = poll_edition('vremade_standard_edition' .. G.GAME.round_resets.ante, 2, true)
+        local _edition = SMODS.poll_edition { key = "vremade_standard_edition" .. G.GAME.round_resets.ante, mod = 2, no_neg = true }
         local _seal = SMODS.poll_seal({ mod = 10 })
         return {
             set = "Playing Card",
