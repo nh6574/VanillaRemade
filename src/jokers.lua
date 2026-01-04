@@ -1470,6 +1470,7 @@ SMODS.Joker {
                 G.GAME.dollar_buffer = (G.GAME.dollar_buffer or 0) + card.ability.extra.dollars
                 return {
                     dollars = card.ability.extra.dollars,
+                    delay = 0.45,
                     func = function() -- This is for timing purposes, it runs after the dollar manipulation
                         G.E_MANAGER:add_event(Event({
                             func = function()
@@ -1687,6 +1688,7 @@ SMODS.Joker {
             return {
                 message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.mult_gain } },
                 colour = G.C.RED,
+                delay = 0.45
             }
         end
         if context.joker_main then
@@ -2693,7 +2695,8 @@ SMODS.Joker {
             G.GAME.current_round.discards_used <= 0 and #context.full_hand == 1 then
             return {
                 dollars = card.ability.extra.dollars,
-                remove = true
+                remove = true,
+                delay = 0.45
             }
         end
     end
@@ -2853,7 +2856,8 @@ SMODS.Joker {
                 card.ability.extra.Xmult = card.ability.extra.Xmult - card.ability.extra.Xmult_loss
                 return {
                     message = localize { type = 'variable', key = 'a_xmult_minus', vars = { card.ability.extra.Xmult_loss } },
-                    colour = G.C.RED
+                    colour = G.C.RED,
+                    delay = 0.2
                 }
             end
         end
@@ -4008,7 +4012,8 @@ SMODS.Joker {
             card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
             return {
                 message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.xmult } },
-                colour = G.C.RED
+                colour = G.C.RED,
+                delay = 0.45
             }
         end
         if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint and card.ability.extra.xmult > 1 then
@@ -4678,7 +4683,8 @@ SMODS.Joker {
                 card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
                 return {
                     message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.xmult } },
-                    colour = G.C.RED
+                    colour = G.C.RED,
+                    delay = 0.2
                 }
             else
                 card.ability.extra.discards_remaining = card.ability.extra.discards_remaining - 1
