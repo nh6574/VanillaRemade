@@ -3329,13 +3329,16 @@ SMODS.Joker {
     end
 }
 
-local card_is_suit_ref = Card.is_suit
-function Card:is_suit(suit, bypass_debuff, flush_calc)
-    local ret = card_is_suit_ref(self, suit, bypass_debuff, flush_calc)
-    if not ret and not SMODS.has_no_suit(self) and next(SMODS.find_card("j_vremade_smeared")) then
-        return SMODS.smeared_check(self, suit)
+local smods_smeared_check_ref = SMODS.smeared_check
+function SMODS.smeared_check(card, suit)
+    if next(SMODS.find_card("j_vremade_smeared")) then
+        if ((card.base.suit == 'Hearts' or card.base.suit == 'Diamonds') and (suit == 'Hearts' or suit == 'Diamonds')) then
+            return true
+        elseif (card.base.suit == 'Spades' or card.base.suit == 'Clubs') and (suit == 'Spades' or suit == 'Clubs') then
+            return true
+        end
     end
-    return ret
+    return smods_smeared_check_ref(card, suit)
 end
 
 -- Throwback
