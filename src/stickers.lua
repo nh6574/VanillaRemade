@@ -5,7 +5,9 @@ SMODS.Sticker {
     badge_colour = HEX 'c75985',
     pos = { x = 0, y = 0 },
     should_apply = function(self, card, center, area, bypass_roll)
-        return G.GAME.modifiers.enable_eternals_in_shop and not card.perishable and card.config.center.eternal_compat
+        -- The perishable check can't be done here because of timing so the vanilla condition is impossible to recreate here with the API
+        return G.GAME.modifiers.enable_eternals_in_shop and
+            card.config.center.eternal_compat
     end,
 }
 
@@ -19,7 +21,9 @@ SMODS.Sticker {
     badge_colour = HEX '4f5da1',
     pos = { x = 0, y = 2 },
     should_apply = function(self, card, center, area, bypass_roll)
-        return G.GAME.modifiers.enable_perishables_in_shop and not card.eternal and card.config.center.perishable_compat
+        -- The eternal check can't be done here because of timing so the vanilla condition is impossible to recreate here with the API
+        return G.GAME.modifiers.enable_perishables_in_shop and
+            card.config.center.perishable_compat
     end,
     apply = function(self, card, val)
         card.ability[self.key] = val
@@ -39,9 +43,7 @@ SMODS.Sticker {
     key = "rental",
     badge_colour = HEX 'b18f43',
     pos = { x = 1, y = 2 },
-    should_apply = function(self, card, center, area, bypass_roll)
-        return G.GAME.modifiers.enable_rentals_in_shop
-    end,
+    needs_enable_flag = true,
     apply = function(self, card, val)
         card.ability[self.key] = val
         if card.ability[self.key] then card:set_cost() end -- Rental is hard-coded in Card:set_cost() to set the applied card's cost to $1
