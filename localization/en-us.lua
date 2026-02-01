@@ -2139,6 +2139,70 @@ return {
                     "add to your deck",
                 },
             },
+            vremade_black_sticker = {
+                name = "Black Sticker",
+                text = {
+                    "Used this Joker",
+                    "to win on {C:attention}Black",
+                    "{C:attention}Stake{} difficulty",
+                },
+            },
+            vremade_blue_sticker = {
+                name = "Blue Sticker",
+                text = {
+                    "Used this Joker",
+                    "to win on {C:attention}Blue",
+                    "{C:attention}Stake{} difficulty",
+                },
+            },
+            vremade_gold_sticker = {
+                name = "Gold Sticker",
+                text = {
+                    "Used this Joker",
+                    "to win on {C:attention}Gold",
+                    "{C:attention}Stake{} difficulty",
+                },
+            },
+            vremade_green_sticker = {
+                name = "Green Sticker",
+                text = {
+                    "Used this Joker",
+                    "to win on {C:attention}Green",
+                    "{C:attention}Stake{} difficulty",
+                },
+            },
+            vremade_orange_sticker = {
+                name = "Orange Sticker",
+                text = {
+                    "Used this Joker",
+                    "to win on {C:attention}Orange",
+                    "{C:attention}Stake{} difficulty",
+                },
+            },
+            vremade_purple_sticker = {
+                name = "Purple Sticker",
+                text = {
+                    "Used this Joker",
+                    "to win on {C:attention}Purple",
+                    "{C:attention}Stake{} difficulty",
+                },
+            },
+            vremade_red_sticker = {
+                name = "Red Sticker",
+                text = {
+                    "Used this Joker",
+                    "to win on {C:attention}Red",
+                    "{C:attention}Stake{} difficulty",
+                },
+            },
+            vremade_white_sticker = {
+                name = "White Sticker",
+                text = {
+                    "Used this Joker",
+                    "to win on {C:attention}White",
+                    "{C:attention}Stake{} difficulty",
+                },
+            },
         },
         vremade_Planet = { -- If you're making regular Planets the key will be "Planet"
             c_vremade_ceres = {
