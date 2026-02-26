@@ -241,7 +241,7 @@ SMODS.Consumable {
     -- The following is how the implementation would be
     --[[
     can_use = function(self, card)
-        return G.hand and #G.hand.highlighted <= card.config.max_highlighted and #G.hand.highlighted > 0
+        return G.hand and #G.hand.highlighted <= card.ability.max_highlighted and #G.hand.highlighted > 0
     end
     ]] --
 }
@@ -279,7 +279,7 @@ SMODS.Consumable {
         end
     end,
     can_use = function(self, card)
-        return G.hand and #G.hand.highlighted <= card.config.max_highlighted and #G.hand.highlighted > 0 and
+        return G.hand and #G.hand.highlighted <= card.ability.max_highlighted and #G.hand.highlighted > 0 and
             (not G.hand.highlighted[1].edition)
     end
 }
@@ -657,7 +657,7 @@ SMODS.Consumable {
     -- The following is how the implementation would be
     --[[
     can_use = function(self, card)
-        return G.hand and #G.hand.highlighted <= card.config.max_highlighted and #G.hand.highlighted > 0
+        return G.hand and #G.hand.highlighted <= card.ability.max_highlighted and #G.hand.highlighted > 0
     end
     --]]
 }
@@ -755,7 +755,7 @@ SMODS.Consumable {
     -- The following is how the implementation would be
     --[[
     can_use = function(self, card)
-        return G.hand and #G.hand.highlighted <= card.config.max_highlighted and #G.hand.highlighted > 0
+        return G.hand and #G.hand.highlighted <= card.ability.max_highlighted and #G.hand.highlighted > 0
     end
     --]]
 }
@@ -810,7 +810,7 @@ SMODS.Consumable {
     -- The following is how the implementation would be
     --[[
     can_use = function(self, card)
-        return G.hand and #G.hand.highlighted <= card.config.max_highlighted and #G.hand.highlighted > 0
+        return G.hand and #G.hand.highlighted <= card.ability.max_highlighted and #G.hand.highlighted > 0
     end
     --]]
 }
@@ -856,7 +856,7 @@ SMODS.Consumable {
     -- The following is how the implementation would be
     --[[
     can_use = function(self, card)
-        return G.hand and #G.hand.highlighted <= card.config.max_highlighted and #G.hand.highlighted > 0
+        return G.hand and #G.hand.highlighted <= card.ability.max_highlighted and #G.hand.highlighted > 0
     end
     --]]
 }
