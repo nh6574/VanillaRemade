@@ -645,7 +645,7 @@ SMODS.Joker {
             r_mults[#r_mults + 1] = tostring(i)
         end
         local loc_mult = ' ' .. (localize('k_mult')) .. ' '
-        main_start = {
+        local main_start = {
             { n = G.UIT.T, config = { text = '  +', colour = G.C.MULT, scale = 0.32 } },
             { n = G.UIT.O, config = { object = DynaText({ string = r_mults, colours = { G.C.RED }, pop_in_rate = 9999999, silent = true, random_element = true, pop_delay = 0.5, scale = 0.32, min_cycle_time = 0 }) } },
             {
