@@ -136,7 +136,7 @@ SMODS.Back {
         G.GAME.starting_voucher_count = (G.GAME.starting_voucher_count or 0) + 1
         G.E_MANAGER:add_event(Event({ -- Adding back objects of any type from a deck MUST be done within an event
             func = function()
-                back.apply_to_run(nil, G.P_CENTERS[self.config.voucher])
+                Card.apply_to_run(nil, G.P_CENTERS[self.config.voucher])
                 return true
             end
         }))
@@ -184,7 +184,7 @@ SMODS.Back {
         G.GAME.starting_voucher_count = (G.GAME.starting_voucher_count or 0) + 1
         G.E_MANAGER:add_event(Event({
             func = function()
-                back.apply_to_run(nil, G.P_CENTERS[self.config.voucher])
+                Card.apply_to_run(nil, G.P_CENTERS[self.config.voucher])
                 return true
             end
         }))
@@ -330,7 +330,7 @@ SMODS.Back {
             G.GAME.starting_voucher_count = (G.GAME.starting_voucher_count or 0) + 1
             G.E_MANAGER:add_event(Event({
                 func = function()
-                    back.apply_to_run(nil, G.P_CENTERS[v])
+                    Card.apply_to_run(nil, G.P_CENTERS[v])
                     return true
                 end
             }))
