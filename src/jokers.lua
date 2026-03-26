@@ -3103,7 +3103,7 @@ SMODS.Joker {
                         G.hand_text_area.blind_chips:juice_up()
                         G.hand_text_area.game_chips:juice_up()
                         play_sound('tarot1')
-                        card:start_dissolve()
+                        SMODS.destroy_cards(card, nil, true)
                         return true
                     end
                 }))
