@@ -63,7 +63,7 @@ SMODS.Sticker {
     pos = { x = 1, y = 2 },
     needs_enable_flag = true,
     apply = function(self, card, val)
-        card.ability[self.key] = val
+        SMODS.Sticker.apply(self, card, val)
         if card.ability[self.key] then card:set_cost() end
     end,
     loc_vars = function(self, info_queue, card)
