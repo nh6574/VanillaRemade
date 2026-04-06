@@ -91,8 +91,5 @@ SMODS.Sticker {
     key = "pinned",
     badge_colour = HEX 'fda200',
     pos = { x = 10, y = 10 },
-    rate = 0,
-    apply = function(self, card, val)
-        card.ability[self.key] = val
-    end
+    rate = 0
 }
