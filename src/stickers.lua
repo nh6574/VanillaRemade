@@ -70,7 +70,7 @@ SMODS.Sticker {
         return { vars = { G.GAME.rental_rate or 1 } }
     end,
     calculate = function(self, card, context)
-        if context.end_of_round and not context.repetition and not context.individual then
+        if context.end_of_round and context.game_over == false then
             return {
                 dollars = -G.GAME.rental_rate,
             }
