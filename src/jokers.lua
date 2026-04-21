@@ -1608,7 +1608,7 @@ SMODS.Joker {
                 _poker_hands[#_poker_hands + 1] = handname
             end
         end
-        card.ability.extra.poker_hand = pseudorandom_element(_poker_hands, 'vremade_to_do')
+        card.ability.extra.poker_hand = pseudorandom_element(_poker_hands, (card.area and card.area.config.type == 'title') and 'vremade_false_to_do' or 'vremade_to_do')
     end
 }
 
