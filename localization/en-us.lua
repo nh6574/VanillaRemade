@@ -2889,10 +2889,6 @@ return {
             },
         },
         Voucher = {
-            omen_globe = {
-                name = 'omen_globe',
-                text = { 'TODO: describe omen_globe' }
-            },
             v_vremade_antimatter = {
                 name = "Antimatter",
                 text = {
