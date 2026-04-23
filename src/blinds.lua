@@ -415,7 +415,7 @@ SMODS.Blind {
     pos = { x = 0, y = 15 },
     boss = { min = 5 },
     boss_colour = HEX("439a4f"),
-    modifies_draw = true, -- SMODS additionm, you need this if the blind modifies the draws
+    modifies_draw = true, -- SMODS addition, you need this if the blind modifies the draws
     calculate = function(self, blind, context)
         if not blind.disabled then
             if context.drawing_cards and (G.GAME.current_round.hands_played ~= 0 or G.GAME.current_round.discards_used ~= 0) then
