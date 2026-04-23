@@ -51,7 +51,7 @@ SMODS.Booster {
                 skip_materialize = true,
                 soulable = true,
                 key_append =
-                "vremade_ar2"
+                "vremade_ar1"
             }
         end
         return _card
@@ -111,7 +111,7 @@ SMODS.Booster {
                 skip_materialize = true,
                 soulable = true,
                 key_append =
-                "vremade_ar2"
+                "vremade_ar1"
             }
         end
         return _card
@@ -171,7 +171,7 @@ SMODS.Booster {
                 skip_materialize = true,
                 soulable = true,
                 key_append =
-                "vremade_ar2"
+                "vremade_ar1"
             }
         end
         return _card
@@ -231,7 +231,7 @@ SMODS.Booster {
                 skip_materialize = true,
                 soulable = true,
                 key_append =
-                "vremade_ar2"
+                "vremade_ar1"
             }
         end
         return _card
@@ -291,7 +291,7 @@ SMODS.Booster {
                 skip_materialize = true,
                 soulable = true,
                 key_append =
-                "vremade_ar2"
+                "vremade_ar1"
             }
         end
         return _card
@@ -351,7 +351,7 @@ SMODS.Booster {
                 skip_materialize = true,
                 soulable = true,
                 key_append =
-                "vremade_ar2"
+                "vremade_ar1"
             }
         end
         return _card
@@ -411,7 +411,7 @@ SMODS.Booster {
                 skip_materialize = true,
                 soulable = true,
                 key_append =
-                "vremade_ar2"
+                "vremade_ar1"
             }
         end
         return _card
@@ -471,7 +471,7 @@ SMODS.Booster {
                 skip_materialize = true,
                 soulable = true,
                 key_append =
-                "vremade_ar2"
+                "vremade_ar1"
             }
         end
         return _card

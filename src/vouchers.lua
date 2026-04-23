@@ -223,6 +223,21 @@ SMODS.Voucher {
     pos = { x = 2, y = 3 },
     unlocked = false,
     requires = { 'v_vremade_crystal_ball' },
+    calculate = function(self, card, context)
+        if context.create_booster_card and context.booster.config.center.kind == "Arcana" then
+            if pseudorandom('vremade_omen_globe') > 0.8 then
+                return {
+                    booster_create_flags = {
+                        set = "Spectral",
+                        area = G.pack_cards,
+                        skip_materialize = true,
+                        soulable = true,
+                        key_append = "vremade_ar2"
+                    }
+                }
+            end
+        end
+    end,
     locked_loc_vars = function(self, info_queue, card)
         return { vars = { 25, G.PROFILES[G.SETTINGS.profile].career_stats.c_shop_rerolls } }
     end,
@@ -231,88 +246,41 @@ SMODS.Voucher {
     end
 }
 
-SMODS.Booster:take_ownership_by_kind('Arcana', {
-        create_card = function(self, card, i)
-            local _card
-            if (G.GAME.used_vouchers.v_omen_globe and pseudorandom('omen_globe') > 0.8) or (G.GAME.used_vouchers.v_vremade_omen_globe and pseudorandom('vremade_omen_globe') > 0.8) then
-                _card = {
-                    set = "Spectral",
-                    area = G.pack_cards,
-                    skip_materialize = true,
-                    soulable = true,
-                    key_append =
-                    "ar2"
-                }
-            else
-                _card = {
-                    set = "Tarot",
-                    area = G.pack_cards,
-                    skip_materialize = true,
-                    soulable = true,
-                    key_append =
-                    "ar1"
-                }
-            end
-            return _card
-        end,
-    },
-    true
-)
-
 -- Telescope
 SMODS.Voucher {
     key = 'telescope',
     pos = { x = 3, y = 2 },
-}
-
-SMODS.Booster:take_ownership_by_kind('Celestial', {
-        create_card = function(self, card, i)
-            local _card
-            if (G.GAME.used_vouchers.v_telescope or G.GAME.used_vouchers.v_vremade_telescope) and i == 1 then
-                local _planet, _hand, _tally = nil, nil, 0
-                for _, handname in ipairs(G.handlist) do
-                    if SMODS.is_poker_hand_visible(handname) and G.GAME.hands[handname].played > _tally then
-                        _hand = handname
-                        _tally = G.GAME.hands[handname].played
+    calculate = function(self, card, context)
+        if context.create_booster_card and context.booster.config.center.kind == "Celestial"
+            and context.index == 1 then
+            local _planet, _hand, _tally = nil, nil, 0
+            for _, handname in ipairs(G.handlist) do
+                if SMODS.is_poker_hand_visible(handname) and G.GAME.hands[handname].played > _tally then
+                    _hand = handname
+                    _tally = G.GAME.hands[handname].played
+                end
+            end
+            if _hand then
+                for _, v in pairs(G.P_CENTER_POOLS.Planet) do
+                    if v.config.hand_type == _hand then
+                        _planet = v.key
                     end
                 end
-                if _hand then
-                    for _, v in pairs(G.P_CENTER_POOLS.Planet) do
-                        if v.config.hand_type == _hand then
-                            _planet = v.key
-                        end
-                    end
-                end
-                _card = {
-                    set = "Planet",
-                    area = G.pack_cards,
-                    skip_materialize = true,
-                    soulable = true,
-                    key = _planet,
-                    key_append = "pl1"
-                }
-            else
-                _card = {
-                    set = "Planet",
-                    area = G.pack_cards,
-                    skip_materialize = true,
-                    soulable = true,
-                    key_append =
-                    "pl1"
+            end
+            if _planet then
+                return {
+                    booster_create_flags = {
+                        set = "Planet",
+                        area = G.pack_cards,
+                        skip_materialize = true,
+                        soulable = true,
+                        key = _planet,
+                    }
                 }
             end
-            return _card
-        end,
-        loc_vars = function(self, info_queue, card)
-            local cfg = (card and card.ability) or self.config
-            return {
-                vars = { cfg.choose, cfg.extra },
-                key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end
-            }
-        end,
-    },
-    true
-)
+        end
+    end,
+}
 
 -- Observatory
 SMODS.Voucher {
@@ -604,8 +572,6 @@ SMODS.Voucher {
     end
 }
 
--- Illusion | The enhancement portion of Illusion is handled in functions/UI_definitions.lua
--- and would require a Lovely patch or a hook to replicate
 SMODS.Voucher {
     key = 'illusion',
     pos = { x = 4, y = 3 },
@@ -614,6 +580,14 @@ SMODS.Voucher {
     requires = { 'v_vremade_magic_trick' },
     loc_vars = function(self, info_queue, card)
         return { vars = {} }
+    end,
+    calculate = function(self, card, context)
+        if context.modify_shop_card and
+            (context.card.ability.set == 'Enhanced' or context.card.ability.set == 'Default') then -- is a playing card
+            if pseudorandom('vremade_illusion') > 0.8 then
+                context.card:set_edition(SMODS.poll_edition { key = 'vremade_illusion_edition', no_negative = true, guaranteed = true })
+            end
+        end
     end,
     redeem = function(self, card)
         G.E_MANAGER:add_event(Event({
@@ -682,6 +656,7 @@ SMODS.Voucher {
 
 -- Director's Cut | Director's Cut and Retcon both do not have a redeem functions. The game handles
 -- their functions inside G.FUNCS.reroll_boss_button in functions/button_callbacks.lua
+-- and create_UIBox_blind_select in functions/UI_definitions.lua
 SMODS.Voucher {
     key = 'directors_cut',
     pos = { x = 6, y = 2 },

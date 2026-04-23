@@ -433,6 +433,7 @@ SMODS.Joker {
             end
             if my_pos and G.jokers.cards[my_pos + 1] and not SMODS.is_eternal(G.jokers.cards[my_pos + 1], card) and not G.jokers.cards[my_pos + 1].getting_sliced then
                 local sliced_card = G.jokers.cards[my_pos + 1]
+                -- You can also use SMODS.destroy_cards(sliced_card) if you dont care about the animation
                 sliced_card.getting_sliced = true -- Make sure to do this on destruction effects
                 G.GAME.joker_buffer = G.GAME.joker_buffer - 1
                 G.E_MANAGER:add_event(Event({
@@ -761,11 +762,8 @@ SMODS.Joker {
     end,
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play then
-            if context.other_card:get_id() == 2 or
-                context.other_card:get_id() == 3 or
-                context.other_card:get_id() == 5 or
-                context.other_card:get_id() == 8 or
-                context.other_card:get_id() == 14 then
+            local id = context.other_card:get_id()
+            if id == 2 or id == 3 or id == 5 or id == 8 or id == 14 then
                 return {
                     mult = card.ability.extra.mult
                 }
@@ -886,10 +884,8 @@ SMODS.Joker {
     config = { extra = { repetitions = 1 } },
     calculate = function(self, card, context)
         if context.repetition and context.cardarea == G.play then
-            if context.other_card:get_id() == 2 or
-                context.other_card:get_id() == 3 or
-                context.other_card:get_id() == 4 or
-                context.other_card:get_id() == 5 then
+            local id = context.other_card:get_id()
+            if id == 2 or id == 3 or id == 4 or id == 5 then
                 return {
                     repetitions = card.ability.extra.repetitions
                 }
@@ -963,9 +959,8 @@ SMODS.Joker {
     end,
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play then
-            if context.other_card:get_id() <= 10 and
-                context.other_card:get_id() >= 0 and
-                context.other_card:get_id() % 2 == 0 then
+            local id = context.other_card:get_id()
+            if id <= 10 and id >= 0 and id % 2 == 0 then
                 return {
                     mult = card.ability.extra.mult
                 }
@@ -987,10 +982,8 @@ SMODS.Joker {
     end,
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play then
-            if (context.other_card:get_id() <= 10 and
-                    context.other_card:get_id() >= 0 and
-                    context.other_card:get_id() % 2 == 1) or
-                (context.other_card:get_id() == 14) then
+            local id = context.other_card:get_id()
+            if (id <= 10 and id >= 0 and id % 2 == 1) or (id == 14) then
                 return {
                     chips = card.ability.extra.chips
                 }
@@ -2620,7 +2613,7 @@ SMODS.Joker {
         return { vars = { card.ability.extra.xmult } }
     end,
     calculate = function(self, card, context)
-        if context.other_joker and (context.other_joker.config.center.rarity == 2 or context.other_joker.config.center.rarity == "Uncommon") then
+        if context.other_joker and context.other_joker:is_rarity("Uncommon") then
             return {
                 xmult = card.ability.extra.xmult
             }
@@ -2664,7 +2657,7 @@ SMODS.Joker {
         if context.selling_self then
             G.E_MANAGER:add_event(Event({
                 func = (function()
-                    add_tag(Tag('tag_double'))
+                    add_tag({ key = 'tag_double' })
                     play_sound('generic1', 0.9 + math.random() * 0.1, 0.8)
                     play_sound('holo1', 1.2 + math.random() * 0.1, 0.4)
                     return true
@@ -3269,12 +3262,12 @@ SMODS.Joker {
             --[[
                 All of this can be replaced by the following if you don't care about the animation
 
-                local _card = SMODS.add_card { set = "Base", seal = SMODS.poll_seal({ guaranteed = true, type_key = 'vremade_certificate_seal' }) }
+                local _card = SMODS.add_card { set = "Base", seal = SMODS.poll_seal({ guaranteed = true, type_key = 'vremade_certificate_seal' }), key_append = "vremade_certificate" }
                 G.GAME.blind:debuff_card(_card)
                 G.hand:sort()
                 SMODS.calculate_context({ playing_card_added = true, cards = { _card } })
             ]]
-            local _card = SMODS.create_card { set = "Base", seal = SMODS.poll_seal({ guaranteed = true, type_key = 'vremade_certificate_seal' }), area = G.discard }
+            local _card = SMODS.create_card { set = "Base", seal = SMODS.poll_seal({ guaranteed = true, type_key = 'vremade_certificate_seal' }), area = G.discard, key_append = "vremade_certificate" }
             G.playing_card = (G.playing_card and G.playing_card + 1) or 1
             _card.playing_card = G.playing_card
             table.insert(G.playing_cards, _card)
@@ -4532,13 +4525,11 @@ SMODS.Joker {
     end
 }
 
-local card_set_cost_ref = Card.set_cost
-function Card:set_cost()
-    card_set_cost_ref(self)
+local card_set_cost_value_ref = Card.set_cost_value
+function Card:set_cost_value() -- SMODS addition
+    card_set_cost_value_ref(self)
     if next(SMODS.find_card("j_vremade_astronomer")) then
         if (self.ability.set == 'Planet' or (self.ability.set == 'Booster' and self.config.center.kind == 'Celestial')) then self.cost = 0 end
-        self.sell_cost = math.max(1, math.floor(self.cost / 2)) + (self.ability.extra_value or 0)
-        self.sell_cost_label = self.facing == 'back' and '?' or self.sell_cost
     end
 end
 

@@ -22,14 +22,13 @@ SMODS.Consumable {
         return { vars = { card.ability.extra.destroy, card.ability.extra.cards } }
     end,
     use = function(self, card, area, copier)
-        local used_tarot = copier or card
         local card_to_destroy = pseudorandom_element(G.hand.cards, 'random_destroy')
         G.E_MANAGER:add_event(Event({
             trigger = 'after',
             delay = 0.4,
             func = function()
                 play_sound('tarot1')
-                used_tarot:juice_up(0.3, 0.5)
+                card:juice_up(0.3, 0.5)
                 return true
             end
         }))
@@ -46,15 +45,15 @@ SMODS.Consumable {
                         local rank = SMODS.Ranks[rank_key]
                         if rank.face then table.insert(faces, rank) end
                     end
-                    local _rank = pseudorandom_element(faces, 'familiar_create').card_key
+                    local _rank = pseudorandom_element(faces, 'vremade_familiar_create').card_key
                     local cen_pool = {}
                     for _, enhancement_center in pairs(G.P_CENTER_POOLS["Enhanced"]) do
                         if enhancement_center.key ~= 'm_stone' and not enhancement_center.overrides_base_rank then
-                            cen_pool[#cen_pool + 1] = enhancement_center
+                            cen_pool[#cen_pool + 1] = enhancement_center.key
                         end
                     end
-                    local enhancement = pseudorandom_element(cen_pool, 'spe_card')
-                    cards[i] = SMODS.add_card { set = "Base", rank = _rank, enhancement = enhancement.key }
+                    local enhancement = SMODS.poll_enhancement { guaranteed = true, options = cen_pool, key = "vremade_spe_card" }
+                    cards[i] = SMODS.add_card { set = "Base", rank = _rank, enhancement = enhancement, key_append = "vremade_familiar_card" }
                 end
                 SMODS.calculate_context({ playing_card_added = true, cards = cards })
                 return true
@@ -84,14 +83,13 @@ SMODS.Consumable {
         return { vars = { card.ability.extra.destroy, card.ability.extra.cards } }
     end,
     use = function(self, card, area, copier)
-        local used_tarot = copier or card
-        local card_to_destroy = pseudorandom_element(G.hand.cards, 'random_destroy')
+        local card_to_destroy = pseudorandom_element(G.hand.cards, 'vremade_grim_random_destroy')
         G.E_MANAGER:add_event(Event({
             trigger = 'after',
             delay = 0.4,
             func = function()
                 play_sound('tarot1')
-                used_tarot:juice_up(0.3, 0.5)
+                card:juice_up(0.3, 0.5)
                 return true
             end
         }))
@@ -106,11 +104,11 @@ SMODS.Consumable {
                     local cen_pool = {}
                     for _, enhancement_center in pairs(G.P_CENTER_POOLS["Enhanced"]) do
                         if enhancement_center.key ~= 'm_stone' and not enhancement_center.overrides_base_rank then
-                            cen_pool[#cen_pool + 1] = enhancement_center
+                            cen_pool[#cen_pool + 1] = enhancement_center.key
                         end
                     end
-                    local enhancement = pseudorandom_element(cen_pool, 'spe_card')
-                    cards[i] = SMODS.add_card { set = "Base", rank = 'Ace', enhancement = enhancement.key }
+                    local enhancement = SMODS.poll_enhancement { guaranteed = true, options = cen_pool, key = "vremade_spe_card" }
+                    cards[i] = SMODS.add_card { set = "Base", rank = 'Ace', enhancement = enhancement, key_append = "vremade_grim_card" }
                 end
                 SMODS.calculate_context({ playing_card_added = true, cards = cards })
                 return true
@@ -140,14 +138,13 @@ SMODS.Consumable {
         return { vars = { card.ability.extra.destroy, card.ability.extra.cards } }
     end,
     use = function(self, card, area, copier)
-        local used_tarot = copier or card
-        local card_to_destroy = pseudorandom_element(G.hand.cards, 'random_destroy')
+        local card_to_destroy = pseudorandom_element(G.hand.cards, 'vremade_incantation_random_destroy')
         G.E_MANAGER:add_event(Event({
             trigger = 'after',
             delay = 0.4,
             func = function()
                 play_sound('tarot1')
-                used_tarot:juice_up(0.3, 0.5)
+                card:juice_up(0.3, 0.5)
                 return true
             end
         }))
@@ -163,15 +160,15 @@ SMODS.Consumable {
                         local rank = SMODS.Ranks[rank_key]
                         if rank_key ~= 'Ace' and not rank.face then table.insert(numbers, rank) end
                     end
-                    local _rank = pseudorandom_element(numbers, 'incantation_create').card_key
+                    local _rank = pseudorandom_element(numbers, 'vremade_incantation_create').card_key
                     local cen_pool = {}
                     for _, enhancement_center in pairs(G.P_CENTER_POOLS["Enhanced"]) do
                         if enhancement_center.key ~= 'm_stone' and not enhancement_center.overrides_base_rank then
-                            cen_pool[#cen_pool + 1] = enhancement_center
+                            cen_pool[#cen_pool + 1] = enhancement_center.key
                         end
                     end
-                    local enhancement = pseudorandom_element(cen_pool, 'spe_card')
-                    cards[i] = SMODS.add_card { set = "Base", rank = _rank, enhancement = enhancement.key }
+                    local enhancement = SMODS.poll_enhancement { guaranteed = true, options = cen_pool, key = "vremade_spe_card" }
+                    cards[i] = SMODS.add_card { set = "Base", rank = _rank, enhancement = enhancement, key_append = "vremade_incantation_card" }
                 end
                 SMODS.calculate_context({ playing_card_added = true, cards = cards })
                 return true
@@ -295,7 +292,7 @@ SMODS.Consumable {
             delay = 0.4,
             func = function()
                 play_sound('timpani')
-                SMODS.add_card({ set = 'Joker', rarity = 'Rare' })
+                SMODS.add_card({ set = 'Joker', rarity = 'Rare', key_append = 'vremade_wra' })
                 card:juice_up(0.3, 0.5)
                 if G.GAME.dollars ~= 0 then
                     ease_dollars(-G.GAME.dollars, true)
@@ -323,13 +320,12 @@ SMODS.Consumable {
     set = 'vremade_Spectral',
     pos = { x = 6, y = 4 },
     use = function(self, card, area, copier)
-        local used_tarot = copier or card
         G.E_MANAGER:add_event(Event({
             trigger = 'after',
             delay = 0.4,
             func = function()
                 play_sound('tarot1')
-                used_tarot:juice_up(0.3, 0.5)
+                card:juice_up(0.3, 0.5)
                 return true
             end
         }))
@@ -346,7 +342,7 @@ SMODS.Consumable {
                 end
             }))
         end
-        local _suit = pseudorandom_element(SMODS.Suits, 'sigil')
+        local _suit = pseudorandom_element(SMODS.Suits, 'vremade_sigil')
         for i = 1, #G.hand.cards do
             G.E_MANAGER:add_event(Event({
                 func = function()
@@ -389,13 +385,12 @@ SMODS.Consumable {
     set = 'vremade_Spectral',
     pos = { x = 7, y = 4 },
     use = function(self, card, area, copier)
-        local used_tarot = copier or card
         G.E_MANAGER:add_event(Event({
             trigger = 'after',
             delay = 0.4,
             func = function()
                 play_sound('tarot1')
-                used_tarot:juice_up(0.3, 0.5)
+                card:juice_up(0.3, 0.5)
                 return true
             end
         }))
@@ -412,7 +407,7 @@ SMODS.Consumable {
                 end
             }))
         end
-        local _rank = pseudorandom_element(SMODS.Ranks, 'ouija')
+        local _rank = pseudorandom_element(SMODS.Ranks, 'vremade_ouija')
         for i = 1, #G.hand.cards do
             G.E_MANAGER:add_event(Event({
                 func = function()
@@ -457,7 +452,7 @@ SMODS.Consumable {
     pos = { x = 8, y = 4 },
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS.e_negative
-        return { vars = { G.GAME.ecto_minus or 1 } }
+        return { vars = { G.GAME.vremade_ecto_minus or 1 } }
     end,
     use = function(self, card, area, copier)
         local editionless_jokers = SMODS.Edition:get_edition_cards(G.jokers, true)
@@ -465,12 +460,12 @@ SMODS.Consumable {
             trigger = 'after',
             delay = 0.4,
             func = function()
-                local eligible_card = pseudorandom_element(editionless_jokers, 'ectoplasm')
-                eligible_card:set_edition({ negative = true })
+                local eligible_card = pseudorandom_element(editionless_jokers, 'vremade_ectoplasm')
+                eligible_card:set_edition("e_negative")
 
-                G.GAME.ecto_minus = G.GAME.ecto_minus or 1
-                G.hand:change_size(-G.GAME.ecto_minus)
-                G.GAME.ecto_minus = G.GAME.ecto_minus + 1
+                G.GAME.vremade_ecto_minus = G.GAME.vremade_ecto_minus or 1
+                G.hand:change_size(-G.GAME.vremade_ecto_minus)
+                G.GAME.vremade_ecto_minus = G.GAME.vremade_ecto_minus + 1
 
                 card:juice_up(0.3, 0.5)
                 return true
@@ -509,7 +504,7 @@ SMODS.Consumable {
             end
         )
 
-        pseudoshuffle(temp_hand, 'immolate')
+        pseudoshuffle(temp_hand, 'vremade_immolate')
 
         for i = 1, card.ability.extra.destroy do destroyed_cards[#destroyed_cards + 1] = temp_hand[i] end
 
@@ -560,17 +555,17 @@ SMODS.Consumable {
     end,
     use = function(self, card, area, copier)
         local deletable_jokers = {}
-        for _, joker in pairs(G.jokers.cards) do
+        for _, joker in ipairs(G.jokers.cards) do
             if not SMODS.is_eternal(joker, card) then deletable_jokers[#deletable_jokers + 1] = joker end
         end
 
-        local chosen_joker = pseudorandom_element(G.jokers.cards, 'ankh_choice')
+        local chosen_joker = pseudorandom_element(G.jokers.cards, 'vremade_ankh_choice')
         local _first_dissolve = nil
         G.E_MANAGER:add_event(Event({
             trigger = 'before',
             delay = 0.75,
             func = function()
-                for _, joker in pairs(deletable_jokers) do
+                for _, joker in ipairs(deletable_jokers) do
                     if joker ~= chosen_joker then
                         joker:start_dissolve(nil, _first_dissolve)
                         _first_dissolve = true
@@ -677,11 +672,11 @@ SMODS.Consumable {
             trigger = 'after',
             delay = 0.4,
             func = function()
-                local eligible_card = pseudorandom_element(editionless_jokers, 'hex')
-                eligible_card:set_edition({ polychrome = true })
+                local eligible_card = pseudorandom_element(editionless_jokers, 'vremade_hex')
+                eligible_card:set_edition("e_polychrome")
 
                 local _first_dissolve = nil
-                for _, joker in pairs(G.jokers.cards) do
+                for _, joker in ipairs(G.jokers.cards) do
                     if joker ~= eligible_card and not SMODS.is_eternal(joker, card) then
                         joker:start_dissolve(nil, _first_dissolve)
                         _first_dissolve = true
@@ -874,7 +869,7 @@ SMODS.Consumable {
             delay = 0.4,
             func = function()
                 play_sound('timpani')
-                SMODS.add_card({ set = 'Joker', legendary = true })
+                SMODS.add_card({ set = 'Joker', legendary = true, key_append = "vremade_sou" })
                 check_for_unlock { type = 'spawn_legendary' }
                 card:juice_up(0.3, 0.5)
                 return true

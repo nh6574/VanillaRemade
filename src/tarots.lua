@@ -162,7 +162,7 @@ SMODS.Consumable {
                 func = function()
                     if G.consumeables.config.card_limit > #G.consumeables.cards then
                         play_sound('timpani')
-                        SMODS.add_card({ set = 'Planet' })
+                        SMODS.add_card({ set = 'Planet', key_append = "vremade_pri" })
                         card:juice_up(0.3, 0.5)
                     end
                     return true
@@ -270,7 +270,7 @@ SMODS.Consumable {
                 func = function()
                     if G.consumeables.config.card_limit > #G.consumeables.cards then
                         play_sound('timpani')
-                        SMODS.add_card({ set = 'vremade_Tarot' })
+                        SMODS.add_card({ set = 'vremade_Tarot', key_append = "vremade_emp" })
                         card:juice_up(0.3, 0.5)
                     end
                     return true
@@ -1304,7 +1304,7 @@ SMODS.Consumable {
             delay = 0.4,
             func = function()
                 play_sound('timpani')
-                SMODS.add_card({ set = 'Joker' })
+                SMODS.add_card({ set = 'Joker', key_append = "vremade_jud" })
                 card:juice_up(0.3, 0.5)
                 return true
             end

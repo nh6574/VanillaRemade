@@ -504,7 +504,7 @@ SMODS.Tag {
                 if context.tag.ability and context.tag.ability.orbital_hand then
                     G.orbital_hand = context.tag.ability.orbital_hand
                 end
-                add_tag(Tag(context.tag.key))
+                add_tag({ key = context.tag.key })
                 G.orbital_hand = nil
                 G.CONTROLLER.locks[lock] = nil
                 return true
