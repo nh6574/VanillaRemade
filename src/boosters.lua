@@ -9,9 +9,14 @@ SMODS.Booster {
     group_key = "k_arcana_pack", -- Delete this if you're using `group_name` in `loc_txt`
     draw_hand = true,
     loc_vars = function(self, info_queue, card)
+        -- This loc_vars is here to show how it would normally be structured and use the `key` return
+        -- If you don't need that you can omit the loc_vars and SMODS will handle the default variables for you
         local cfg = (card and card.ability) or self.config
         return {
-            vars = { cfg.choose, cfg.extra },
+            vars = {
+                math.min(cfg.choose + (G.GAME.modifiers.booster_choice_mod or 0),
+                    math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))),
+                math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0)) },
             key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
@@ -69,9 +74,14 @@ SMODS.Booster {
     group_key = "k_arcana_pack", -- Delete this if you're using `group_name` in `loc_txt`
     draw_hand = true,
     loc_vars = function(self, info_queue, card)
+        -- This loc_vars is here to show how it would normally be structured and use the `key` return
+        -- If you don't need that you can omit the loc_vars and SMODS will handle the default variables for you
         local cfg = (card and card.ability) or self.config
         return {
-            vars = { cfg.choose, cfg.extra },
+            vars = {
+                math.min(cfg.choose + (G.GAME.modifiers.booster_choice_mod or 0),
+                    math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))),
+                math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0)) },
             key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
@@ -129,9 +139,14 @@ SMODS.Booster {
     group_key = "k_arcana_pack", -- Delete this if you're using `group_name` in `loc_txt`
     draw_hand = true,
     loc_vars = function(self, info_queue, card)
+        -- This loc_vars is here to show how it would normally be structured and use the `key` return
+        -- If you don't need that you can omit the loc_vars and SMODS will handle the default variables for you
         local cfg = (card and card.ability) or self.config
         return {
-            vars = { cfg.choose, cfg.extra },
+            vars = {
+                math.min(cfg.choose + (G.GAME.modifiers.booster_choice_mod or 0),
+                    math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))),
+                math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0)) },
             key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
@@ -189,9 +204,14 @@ SMODS.Booster {
     group_key = "k_arcana_pack", -- Delete this if you're using `group_name` in `loc_txt`
     draw_hand = true,
     loc_vars = function(self, info_queue, card)
+        -- This loc_vars is here to show how it would normally be structured and use the `key` return
+        -- If you don't need that you can omit the loc_vars and SMODS will handle the default variables for you
         local cfg = (card and card.ability) or self.config
         return {
-            vars = { cfg.choose, cfg.extra },
+            vars = {
+                math.min(cfg.choose + (G.GAME.modifiers.booster_choice_mod or 0),
+                    math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))),
+                math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0)) },
             key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
@@ -249,9 +269,14 @@ SMODS.Booster {
     group_key = "k_arcana_pack", -- Delete this if you're using `group_name` in `loc_txt`
     draw_hand = true,
     loc_vars = function(self, info_queue, card)
+        -- This loc_vars is here to show how it would normally be structured and use the `key` return
+        -- If you don't need that you can omit the loc_vars and SMODS will handle the default variables for you
         local cfg = (card and card.ability) or self.config
         return {
-            vars = { cfg.choose, cfg.extra },
+            vars = {
+                math.min(cfg.choose + (G.GAME.modifiers.booster_choice_mod or 0),
+                    math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))),
+                math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0)) },
             key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
@@ -309,9 +334,14 @@ SMODS.Booster {
     group_key = "k_arcana_pack", -- Delete this if you're using `group_name` in `loc_txt`
     draw_hand = true,
     loc_vars = function(self, info_queue, card)
+        -- This loc_vars is here to show how it would normally be structured and use the `key` return
+        -- If you don't need that you can omit the loc_vars and SMODS will handle the default variables for you
         local cfg = (card and card.ability) or self.config
         return {
-            vars = { cfg.choose, cfg.extra },
+            vars = {
+                math.min(cfg.choose + (G.GAME.modifiers.booster_choice_mod or 0),
+                    math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))),
+                math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0)) },
             key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
@@ -369,9 +399,14 @@ SMODS.Booster {
     group_key = "k_arcana_pack", -- Delete this if you're using `group_name` in `loc_txt`
     draw_hand = true,
     loc_vars = function(self, info_queue, card)
+        -- This loc_vars is here to show how it would normally be structured and use the `key` return
+        -- If you don't need that you can omit the loc_vars and SMODS will handle the default variables for you
         local cfg = (card and card.ability) or self.config
         return {
-            vars = { cfg.choose, cfg.extra },
+            vars = {
+                math.min(cfg.choose + (G.GAME.modifiers.booster_choice_mod or 0),
+                    math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))),
+                math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0)) },
             key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
@@ -429,9 +464,14 @@ SMODS.Booster {
     group_key = "k_arcana_pack", -- Delete this if you're using `group_name` in `loc_txt`
     draw_hand = true,
     loc_vars = function(self, info_queue, card)
+        -- This loc_vars is here to show how it would normally be structured and use the `key` return
+        -- If you don't need that you can omit the loc_vars and SMODS will handle the default variables for you
         local cfg = (card and card.ability) or self.config
         return {
-            vars = { cfg.choose, cfg.extra },
+            vars = {
+                math.min(cfg.choose + (G.GAME.modifiers.booster_choice_mod or 0),
+                    math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))),
+                math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0)) },
             key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
@@ -490,9 +530,14 @@ SMODS.Booster {
     config = { extra = 3, choose = 1 },
     group_key = "k_celestial_pack", -- Delete this if you're using `group_name` in `loc_txt`
     loc_vars = function(self, info_queue, card)
+        -- This loc_vars is here to show how it would normally be structured and use the `key` return
+        -- If you don't need that you can omit the loc_vars and SMODS will handle the default variables for you
         local cfg = (card and card.ability) or self.config
         return {
-            vars = { cfg.choose, cfg.extra },
+            vars = {
+                math.min(cfg.choose + (G.GAME.modifiers.booster_choice_mod or 0),
+                    math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))),
+                math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0)) },
             key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
@@ -571,9 +616,14 @@ SMODS.Booster {
     config = { extra = 3, choose = 1 },
     group_key = "k_celestial_pack", -- Delete this if you're using `group_name` in `loc_txt`
     loc_vars = function(self, info_queue, card)
+        -- This loc_vars is here to show how it would normally be structured and use the `key` return
+        -- If you don't need that you can omit the loc_vars and SMODS will handle the default variables for you
         local cfg = (card and card.ability) or self.config
         return {
-            vars = { cfg.choose, cfg.extra },
+            vars = {
+                math.min(cfg.choose + (G.GAME.modifiers.booster_choice_mod or 0),
+                    math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))),
+                math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0)) },
             key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
@@ -652,9 +702,14 @@ SMODS.Booster {
     config = { extra = 3, choose = 1 },
     group_key = "k_celestial_pack", -- Delete this if you're using `group_name` in `loc_txt`
     loc_vars = function(self, info_queue, card)
+        -- This loc_vars is here to show how it would normally be structured and use the `key` return
+        -- If you don't need that you can omit the loc_vars and SMODS will handle the default variables for you
         local cfg = (card and card.ability) or self.config
         return {
-            vars = { cfg.choose, cfg.extra },
+            vars = {
+                math.min(cfg.choose + (G.GAME.modifiers.booster_choice_mod or 0),
+                    math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))),
+                math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0)) },
             key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
@@ -733,9 +788,14 @@ SMODS.Booster {
     config = { extra = 3, choose = 1 },
     group_key = "k_celestial_pack", -- Delete this if you're using `group_name` in `loc_txt`
     loc_vars = function(self, info_queue, card)
+        -- This loc_vars is here to show how it would normally be structured and use the `key` return
+        -- If you don't need that you can omit the loc_vars and SMODS will handle the default variables for you
         local cfg = (card and card.ability) or self.config
         return {
-            vars = { cfg.choose, cfg.extra },
+            vars = {
+                math.min(cfg.choose + (G.GAME.modifiers.booster_choice_mod or 0),
+                    math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))),
+                math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0)) },
             key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
@@ -814,9 +874,14 @@ SMODS.Booster {
     config = { extra = 5, choose = 1 },
     group_key = "k_celestial_pack", -- Delete this if you're using `group_name` in `loc_txt`
     loc_vars = function(self, info_queue, card)
+        -- This loc_vars is here to show how it would normally be structured and use the `key` return
+        -- If you don't need that you can omit the loc_vars and SMODS will handle the default variables for you
         local cfg = (card and card.ability) or self.config
         return {
-            vars = { cfg.choose, cfg.extra },
+            vars = {
+                math.min(cfg.choose + (G.GAME.modifiers.booster_choice_mod or 0),
+                    math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))),
+                math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0)) },
             key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
@@ -895,9 +960,14 @@ SMODS.Booster {
     config = { extra = 5, choose = 1 },
     group_key = "k_celestial_pack", -- Delete this if you're using `group_name` in `loc_txt`
     loc_vars = function(self, info_queue, card)
+        -- This loc_vars is here to show how it would normally be structured and use the `key` return
+        -- If you don't need that you can omit the loc_vars and SMODS will handle the default variables for you
         local cfg = (card and card.ability) or self.config
         return {
-            vars = { cfg.choose, cfg.extra },
+            vars = {
+                math.min(cfg.choose + (G.GAME.modifiers.booster_choice_mod or 0),
+                    math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))),
+                math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0)) },
             key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
@@ -976,9 +1046,14 @@ SMODS.Booster {
     config = { extra = 5, choose = 2 },
     group_key = "k_celestial_pack", -- Delete this if you're using `group_name` in `loc_txt`
     loc_vars = function(self, info_queue, card)
+        -- This loc_vars is here to show how it would normally be structured and use the `key` return
+        -- If you don't need that you can omit the loc_vars and SMODS will handle the default variables for you
         local cfg = (card and card.ability) or self.config
         return {
-            vars = { cfg.choose, cfg.extra },
+            vars = {
+                math.min(cfg.choose + (G.GAME.modifiers.booster_choice_mod or 0),
+                    math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))),
+                math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0)) },
             key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
@@ -1057,9 +1132,14 @@ SMODS.Booster {
     config = { extra = 5, choose = 2 },
     group_key = "k_celestial_pack", -- Delete this if you're using `group_name` in `loc_txt`
     loc_vars = function(self, info_queue, card)
+        -- This loc_vars is here to show how it would normally be structured and use the `key` return
+        -- If you don't need that you can omit the loc_vars and SMODS will handle the default variables for you
         local cfg = (card and card.ability) or self.config
         return {
-            vars = { cfg.choose, cfg.extra },
+            vars = {
+                math.min(cfg.choose + (G.GAME.modifiers.booster_choice_mod or 0),
+                    math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))),
+                math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0)) },
             key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
@@ -1141,9 +1221,14 @@ SMODS.Booster {
     group_key = "k_spectral_pack", -- Delete this if you're using `group_name` in `loc_txt`
     draw_hand = true,
     loc_vars = function(self, info_queue, card)
+        -- This loc_vars is here to show how it would normally be structured and use the `key` return
+        -- If you don't need that you can omit the loc_vars and SMODS will handle the default variables for you
         local cfg = (card and card.ability) or self.config
         return {
-            vars = { cfg.choose, cfg.extra },
+            vars = {
+                math.min(cfg.choose + (G.GAME.modifiers.booster_choice_mod or 0),
+                    math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))),
+                math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0)) },
             key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
@@ -1188,9 +1273,14 @@ SMODS.Booster {
     group_key = "k_spectral_pack", -- Delete this if you're using `group_name` in `loc_txt`
     draw_hand = true,
     loc_vars = function(self, info_queue, card)
+        -- This loc_vars is here to show how it would normally be structured and use the `key` return
+        -- If you don't need that you can omit the loc_vars and SMODS will handle the default variables for you
         local cfg = (card and card.ability) or self.config
         return {
-            vars = { cfg.choose, cfg.extra },
+            vars = {
+                math.min(cfg.choose + (G.GAME.modifiers.booster_choice_mod or 0),
+                    math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))),
+                math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0)) },
             key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
@@ -1235,9 +1325,14 @@ SMODS.Booster {
     group_key = "k_spectral_pack", -- Delete this if you're using `group_name` in `loc_txt`
     draw_hand = true,
     loc_vars = function(self, info_queue, card)
+        -- This loc_vars is here to show how it would normally be structured and use the `key` return
+        -- If you don't need that you can omit the loc_vars and SMODS will handle the default variables for you
         local cfg = (card and card.ability) or self.config
         return {
-            vars = { cfg.choose, cfg.extra },
+            vars = {
+                math.min(cfg.choose + (G.GAME.modifiers.booster_choice_mod or 0),
+                    math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))),
+                math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0)) },
             key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
@@ -1282,9 +1377,14 @@ SMODS.Booster {
     group_key = "k_spectral_pack", -- Delete this if you're using `group_name` in `loc_txt`
     draw_hand = true,
     loc_vars = function(self, info_queue, card)
+        -- This loc_vars is here to show how it would normally be structured and use the `key` return
+        -- If you don't need that you can omit the loc_vars and SMODS will handle the default variables for you
         local cfg = (card and card.ability) or self.config
         return {
-            vars = { cfg.choose, cfg.extra },
+            vars = {
+                math.min(cfg.choose + (G.GAME.modifiers.booster_choice_mod or 0),
+                    math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))),
+                math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0)) },
             key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
@@ -1330,9 +1430,14 @@ SMODS.Booster {
     config = { extra = 3, choose = 1 },
     group_key = "k_standard_pack", -- Delete this if you're using `group_name` in `loc_txt`
     loc_vars = function(self, info_queue, card)
+        -- This loc_vars is here to show how it would normally be structured and use the `key` return
+        -- If you don't need that you can omit the loc_vars and SMODS will handle the default variables for you
         local cfg = (card and card.ability) or self.config
         return {
-            vars = { cfg.choose, cfg.extra },
+            vars = {
+                math.min(cfg.choose + (G.GAME.modifiers.booster_choice_mod or 0),
+                    math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))),
+                math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0)) },
             key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
@@ -1379,9 +1484,14 @@ SMODS.Booster {
     config = { extra = 3, choose = 1 },
     group_key = "k_standard_pack", -- Delete this if you're using `group_name` in `loc_txt`
     loc_vars = function(self, info_queue, card)
+        -- This loc_vars is here to show how it would normally be structured and use the `key` return
+        -- If you don't need that you can omit the loc_vars and SMODS will handle the default variables for you
         local cfg = (card and card.ability) or self.config
         return {
-            vars = { cfg.choose, cfg.extra },
+            vars = {
+                math.min(cfg.choose + (G.GAME.modifiers.booster_choice_mod or 0),
+                    math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))),
+                math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0)) },
             key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
@@ -1428,9 +1538,14 @@ SMODS.Booster {
     config = { extra = 3, choose = 1 },
     group_key = "k_standard_pack", -- Delete this if you're using `group_name` in `loc_txt`
     loc_vars = function(self, info_queue, card)
+        -- This loc_vars is here to show how it would normally be structured and use the `key` return
+        -- If you don't need that you can omit the loc_vars and SMODS will handle the default variables for you
         local cfg = (card and card.ability) or self.config
         return {
-            vars = { cfg.choose, cfg.extra },
+            vars = {
+                math.min(cfg.choose + (G.GAME.modifiers.booster_choice_mod or 0),
+                    math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))),
+                math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0)) },
             key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
@@ -1477,9 +1592,14 @@ SMODS.Booster {
     config = { extra = 3, choose = 1 },
     group_key = "k_standard_pack", -- Delete this if you're using `group_name` in `loc_txt`
     loc_vars = function(self, info_queue, card)
+        -- This loc_vars is here to show how it would normally be structured and use the `key` return
+        -- If you don't need that you can omit the loc_vars and SMODS will handle the default variables for you
         local cfg = (card and card.ability) or self.config
         return {
-            vars = { cfg.choose, cfg.extra },
+            vars = {
+                math.min(cfg.choose + (G.GAME.modifiers.booster_choice_mod or 0),
+                    math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))),
+                math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0)) },
             key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
@@ -1526,9 +1646,14 @@ SMODS.Booster {
     config = { extra = 5, choose = 1 },
     group_key = "k_standard_pack", -- Delete this if you're using `group_name` in `loc_txt`
     loc_vars = function(self, info_queue, card)
+        -- This loc_vars is here to show how it would normally be structured and use the `key` return
+        -- If you don't need that you can omit the loc_vars and SMODS will handle the default variables for you
         local cfg = (card and card.ability) or self.config
         return {
-            vars = { cfg.choose, cfg.extra },
+            vars = {
+                math.min(cfg.choose + (G.GAME.modifiers.booster_choice_mod or 0),
+                    math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))),
+                math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0)) },
             key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
@@ -1575,9 +1700,14 @@ SMODS.Booster {
     config = { extra = 5, choose = 1 },
     group_key = "k_standard_pack", -- Delete this if you're using `group_name` in `loc_txt`
     loc_vars = function(self, info_queue, card)
+        -- This loc_vars is here to show how it would normally be structured and use the `key` return
+        -- If you don't need that you can omit the loc_vars and SMODS will handle the default variables for you
         local cfg = (card and card.ability) or self.config
         return {
-            vars = { cfg.choose, cfg.extra },
+            vars = {
+                math.min(cfg.choose + (G.GAME.modifiers.booster_choice_mod or 0),
+                    math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))),
+                math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0)) },
             key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
@@ -1624,9 +1754,14 @@ SMODS.Booster {
     config = { extra = 5, choose = 2 },
     group_key = "k_standard_pack", -- Delete this if you're using `group_name` in `loc_txt`
     loc_vars = function(self, info_queue, card)
+        -- This loc_vars is here to show how it would normally be structured and use the `key` return
+        -- If you don't need that you can omit the loc_vars and SMODS will handle the default variables for you
         local cfg = (card and card.ability) or self.config
         return {
-            vars = { cfg.choose, cfg.extra },
+            vars = {
+                math.min(cfg.choose + (G.GAME.modifiers.booster_choice_mod or 0),
+                    math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))),
+                math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0)) },
             key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
@@ -1673,9 +1808,14 @@ SMODS.Booster {
     config = { extra = 5, choose = 2 },
     group_key = "k_standard_pack", -- Delete this if you're using `group_name` in `loc_txt`
     loc_vars = function(self, info_queue, card)
+        -- This loc_vars is here to show how it would normally be structured and use the `key` return
+        -- If you don't need that you can omit the loc_vars and SMODS will handle the default variables for you
         local cfg = (card and card.ability) or self.config
         return {
-            vars = { cfg.choose, cfg.extra },
+            vars = {
+                math.min(cfg.choose + (G.GAME.modifiers.booster_choice_mod or 0),
+                    math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))),
+                math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0)) },
             key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
@@ -1724,9 +1864,14 @@ SMODS.Booster {
     config = { extra = 2, choose = 1 },
     group_key = "k_buffoon_pack", -- Delete this if you're using `group_name` in `loc_txt`
     loc_vars = function(self, info_queue, card)
+        -- This loc_vars is here to show how it would normally be structured and use the `key` return
+        -- If you don't need that you can omit the loc_vars and SMODS will handle the default variables for you
         local cfg = (card and card.ability) or self.config
         return {
-            vars = { cfg.choose, cfg.extra },
+            vars = {
+                math.min(cfg.choose + (G.GAME.modifiers.booster_choice_mod or 0),
+                    math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))),
+                math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0)) },
             key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
@@ -1748,9 +1893,14 @@ SMODS.Booster {
     config = { extra = 2, choose = 1 },
     group_key = "k_buffoon_pack", -- Delete this if you're using `group_name` in `loc_txt`
     loc_vars = function(self, info_queue, card)
+        -- This loc_vars is here to show how it would normally be structured and use the `key` return
+        -- If you don't need that you can omit the loc_vars and SMODS will handle the default variables for you
         local cfg = (card and card.ability) or self.config
         return {
-            vars = { cfg.choose, cfg.extra },
+            vars = {
+                math.min(cfg.choose + (G.GAME.modifiers.booster_choice_mod or 0),
+                    math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))),
+                math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0)) },
             key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
@@ -1772,9 +1922,14 @@ SMODS.Booster {
     config = { extra = 4, choose = 1 },
     group_key = "k_buffoon_pack", -- Delete this if you're using `group_name` in `loc_txt`
     loc_vars = function(self, info_queue, card)
+        -- This loc_vars is here to show how it would normally be structured and use the `key` return
+        -- If you don't need that you can omit the loc_vars and SMODS will handle the default variables for you
         local cfg = (card and card.ability) or self.config
         return {
-            vars = { cfg.choose, cfg.extra },
+            vars = {
+                math.min(cfg.choose + (G.GAME.modifiers.booster_choice_mod or 0),
+                    math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))),
+                math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0)) },
             key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
@@ -1796,9 +1951,14 @@ SMODS.Booster {
     config = { extra = 4, choose = 2 },
     group_key = "k_buffoon_pack", -- Delete this if you're using `group_name` in `loc_txt`
     loc_vars = function(self, info_queue, card)
+        -- This loc_vars is here to show how it would normally be structured and use the `key` return
+        -- If you don't need that you can omit the loc_vars and SMODS will handle the default variables for you
         local cfg = (card and card.ability) or self.config
         return {
-            vars = { cfg.choose, cfg.extra },
+            vars = {
+                math.min(cfg.choose + (G.GAME.modifiers.booster_choice_mod or 0),
+                    math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))),
+                math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0)) },
             key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end. Remove this if your booster doesn't have artwork variants like vanilla
         }
     end,
