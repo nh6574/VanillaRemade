@@ -13,8 +13,8 @@ SMODS.Sticker {
 }
 
 local smods_is_eternal_ref = SMODS.is_eternal
-function SMODS.is_eternal(card, trigger)
-    return card.ability.vremade_eternal or smods_is_eternal_ref(card, trigger)
+function SMODS.is_eternal(card, trigger, ...)
+    return card.ability.vremade_eternal or smods_is_eternal_ref(card, trigger, ...)
 end
 
 SMODS.Sticker {

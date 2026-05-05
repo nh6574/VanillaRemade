@@ -1,24 +1,27 @@
 --[[
+This mod will use the default Joker atlas for convenience and to not redistribute Balatro assets.
+It is recommended that you include your own atlas. Here's an example.
 
-1. This mod will use the default Joker atlas for convenience and to not redistribute Balatro assets.
-It is recommended that you include your own atlas. Check the SMODS documentation or example mods for more info.
-
-2. Unlike some vanilla Jokers that put values in card.ability, these will all use card.ability.extra as it's best practice for modded Jokers.
-
-3. The objective is not to recreate vanilla code 1-to-1 but to highlight best practices. So while effects should be practically the same, there might be some small differences.
-
-4. Only some of Balatro's specific quirks will be explained. It is recommended to brush up on basic programming logic and basic lua knowledge before starting, as well as reading the documentation on Jokers and calculate functions.
-
-]] --
+SMODS.Atlas({
+    key = "key",
+    path = "filename.png",
+    px = 71,
+    py = 95
+})
+]]
 
 -- Joker
 SMODS.Joker {
     key = "joker",
+    -- atlas = "key", -- here you can use the atlas created above, if you have one
     pos = { x = 0, y = 0 },
     rarity = 1,
     blueprint_compat = true,
     cost = 2,
     discovered = true,
+    --[[
+        Note: Unlike some vanilla Jokers that put values in card.ability, these examples will use card.ability.extra as it's best practice for modded Jokers, since card.ability is used for a lot of other values that might be accindentally written over.
+    ]]
     config = { extra = { mult = 4 }, },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.mult } }
@@ -367,11 +370,11 @@ SMODS.Joker {
 }
 
 local smods_four_fingers_ref = SMODS.four_fingers
-function SMODS.four_fingers(hand_type)
+function SMODS.four_fingers(hand_type, ...)
     if next(SMODS.find_card('j_vremade_four_fingers')) then
         return 4
     end
-    return smods_four_fingers_ref(hand_type)
+    return smods_four_fingers_ref(hand_type, ...)
 end
 
 -- Mime
@@ -904,8 +907,8 @@ SMODS.Joker {
 }
 
 local card_is_face_ref = Card.is_face
-function Card:is_face(from_boss)
-    return card_is_face_ref(self, from_boss) or (self:get_id() and next(SMODS.find_card("j_vremade_pareidolia")))
+function Card:is_face(from_boss, ...)
+    return card_is_face_ref(self, from_boss, ...) or (self:get_id() and next(SMODS.find_card("j_vremade_pareidolia")))
 end
 
 -- Gros Michel
@@ -1894,11 +1897,11 @@ SMODS.Joker {
 }
 
 local smods_shortcut_ref = SMODS.shortcut
-function SMODS.shortcut()
+function SMODS.shortcut(...)
     if next(SMODS.find_card('j_vremade_shortcut')) then
         return true
     end
-    return smods_shortcut_ref()
+    return smods_shortcut_ref(...)
 end
 
 -- Hologram
@@ -3323,7 +3326,7 @@ SMODS.Joker {
 }
 
 local smods_smeared_check_ref = SMODS.smeared_check
-function SMODS.smeared_check(card, suit)
+function SMODS.smeared_check(card, suit, ...)
     if next(SMODS.find_card("j_vremade_smeared")) then
         if ((card.base.suit == 'Hearts' or card.base.suit == 'Diamonds') and (suit == 'Hearts' or suit == 'Diamonds')) then
             return true
@@ -3331,7 +3334,7 @@ function SMODS.smeared_check(card, suit)
             return true
         end
     end
-    return smods_smeared_check_ref(card, suit)
+    return smods_smeared_check_ref(card, suit, ...)
 end
 
 -- Throwback
@@ -3652,11 +3655,11 @@ SMODS.Joker {
 }
 
 local smods_showman_ref = SMODS.showman
-function SMODS.showman(card_key)
+function SMODS.showman(card_key, ...)
     if next(SMODS.find_card('j_vremade_ring_master')) then
         return true
     end
-    return smods_showman_ref(card_key)
+    return smods_showman_ref(card_key, ...)
 end
 
 -- Flower Pot
@@ -4526,11 +4529,12 @@ SMODS.Joker {
 }
 
 local card_set_cost_value_ref = Card.set_cost_value
-function Card:set_cost_value() -- SMODS addition
-    card_set_cost_value_ref(self)
+function Card:set_cost_value(...) -- SMODS addition
+    local ret = card_set_cost_value_ref(self, ...)
     if next(SMODS.find_card("j_vremade_astronomer")) then
         if (self.ability.set == 'Planet' or (self.ability.set == 'Booster' and self.config.center.kind == 'Celestial')) then self.cost = 0 end
     end
+    return ret
 end
 
 -- Burnt Joker

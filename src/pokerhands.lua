@@ -1,3 +1,55 @@
+--- Base parts copied from SMODS
+--- It's recommended to check the vanilla functions for more information (they won't be replicated here)
+
+SMODS.PokerHandPart {
+    key = '_highest',
+    func = function(hand) return get_highest(hand) end
+}
+
+SMODS.PokerHandPart {
+    key = '_straight',
+    func = function(hand)
+        return get_straight(hand, SMODS.four_fingers('straight'), SMODS.shortcut(),
+            SMODS.wrap_around_straight())
+    end
+}
+
+SMODS.PokerHandPart {
+    key = '_flush',
+    func = function(hand) return get_flush(hand) end,
+}
+
+SMODS.PokerHandPart {
+    key = '_all_pairs',
+    func = function(hand)
+        local _2 = get_X_same(2, hand, true)
+        if not next(_2) then return {} end
+        return { SMODS.merge_lists(_2) }
+    end
+}
+
+SMODS.PokerHandPart {
+    key = '_2',
+    func = function(hand) return get_X_same(2, hand, true) end
+}
+
+SMODS.PokerHandPart {
+    key = '_3',
+    func = function(hand) return get_X_same(3, hand, true) end
+}
+
+SMODS.PokerHandPart {
+    key = '_4',
+    func = function(hand) return get_X_same(4, hand, true) end
+}
+
+SMODS.PokerHandPart {
+    key = '_5',
+    func = function(hand) return get_X_same(5, hand, true) end
+}
+
+--- Poker Hands
+
 -- High Card
 SMODS.PokerHand {
     key = "High Card",

@@ -2,7 +2,9 @@
 
 Remakes vanilla objects using SMODS and simple hooks. Meant to serve as a Balatro modding example.
 
-This is not meant to be a tutorial or explained example mod like [these ones](https://github.com/Steamodded/examples/) nor is it meant to be used for playing but rather as a reference point for your own mod effects.
+This is not meant to be a tutorial or explained example mod like [these ones](https://github.com/Steamodded/examples/) nor is it meant to be used for playing but rather as a reference point for your own mod effects. Only some specific quirks of Balatro and SMODS will be explained. It is recommended to brush up on basic programming logic and basic lua knowledge before starting, as well as reading the documentation.
+
+The objective is not to recreate vanilla code 1-to-1 but to highlight best practices. So while effects should be practically the same, there might be some small differences.
 
 Please make sure to check the [SMODS documentation](https://github.com/Steamodded/smods/wiki) and [VanillaRemade wiki](https://github.com/nh6574/VanillaRemade/wiki) as well for more information and guides.
 

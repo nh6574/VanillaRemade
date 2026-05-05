@@ -287,7 +287,7 @@ SMODS.Consumable {
 
 -- The Hierophant
 SMODS.Consumable {
-    key = 'heirophant',
+    key = 'heirophant', -- (sic)
     set = 'vremade_Tarot',
     pos = { x = 5, y = 0 },
     config = { max_highlighted = 2, mod_conv = 'm_vremade_bonus' },
