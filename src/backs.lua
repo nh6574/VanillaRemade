@@ -282,12 +282,12 @@ SMODS.Back {
     apply = function(self, back)
         G.E_MANAGER:add_event(Event({
             func = function()
-                for k, v in pairs(G.playing_cards) do
-                    if v.base.suit == 'Clubs' then
-                        v:change_suit('Spades')
+                for _, playing_card in ipairs(G.playing_cards) do
+                    if playing_card.base.suit == 'Clubs' then
+                        playing_card:change_suit('Spades')
                     end
-                    if v.base.suit == 'Diamonds' then
-                        v:change_suit('Hearts')
+                    if playing_card.base.suit == 'Diamonds' then
+                        playing_card:change_suit('Hearts')
                     end
                 end
                 return true
