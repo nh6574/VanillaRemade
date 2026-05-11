@@ -116,6 +116,17 @@ SMODS.Blind {
     boss = { min = 2 },
     boss_colour = HEX("5186a8"),
     calculate = function(self, blind, context)
+        if context.blind_disabled then
+            for i = 1, #G.hand.cards do
+                if G.hand.cards[i].facing == 'back' then
+                    G.hand.cards[i]:flip()
+                end
+            end
+            for _, playing_card in pairs(G.playing_cards) do
+                playing_card.ability.wheel_flipped = nil
+            end
+        end
+
         if blind.disabled then return end
 
         if context.stay_flipped and context.to_area == G.hand and
@@ -123,16 +134,6 @@ SMODS.Blind {
             return {
                 stay_flipped = true
             }
-        end
-    end,
-    disable = function(self)
-        for i = 1, #G.hand.cards do
-            if G.hand.cards[i].facing == 'back' then
-                G.hand.cards[i]:flip()
-            end
-        end
-        for _, playing_card in pairs(G.playing_cards) do
-            playing_card.ability.wheel_flipped = nil
         end
     end
 }
@@ -145,9 +146,11 @@ SMODS.Blind {
     pos = { x = 0, y = 9 },
     boss = { min = 2 },
     boss_colour = HEX("8a59a5"),
-    disable = function(self)
-        G.GAME.blind.chips = G.GAME.blind.chips / 2
-        G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+    calculate = function(self, blind, context)
+        if context.blind_disabled then
+            G.GAME.blind.chips = G.GAME.blind.chips / 2
+            G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+        end
     end
 }
 
@@ -167,6 +170,17 @@ SMODS.Blind {
         return { vars = { '1' } }
     end,
     calculate = function(self, blind, context)
+        if context.blind_disabled then
+            for i = 1, #G.hand.cards do
+                if G.hand.cards[i].facing == 'back' then
+                    G.hand.cards[i]:flip()
+                end
+            end
+            for _, playing_card in pairs(G.playing_cards) do
+                playing_card.ability.wheel_flipped = nil
+            end
+        end
+
         if blind.disabled then return end
 
         if context.stay_flipped and context.to_area == G.hand and
@@ -174,16 +188,6 @@ SMODS.Blind {
             return {
                 stay_flipped = true
             }
-        end
-    end,
-    disable = function(self)
-        for i = 1, #G.hand.cards do
-            if G.hand.cards[i].facing == 'back' then
-                G.hand.cards[i]:flip()
-            end
-        end
-        for _, playing_card in pairs(G.playing_cards) do
-            playing_card.ability.wheel_flipped = nil
         end
     end
 }
@@ -233,6 +237,17 @@ SMODS.Blind {
     boss = { min = 2 },
     boss_colour = HEX("3e85bd"),
     calculate = function(self, blind, context)
+        if context.blind_disabled then
+            for i = 1, #G.hand.cards do
+                if G.hand.cards[i].facing == 'back' then
+                    G.hand.cards[i]:flip()
+                end
+            end
+            for _, playing_card in pairs(G.playing_cards) do
+                playing_card.ability.wheel_flipped = nil
+            end
+        end
+
         if context.setting_blind or context.hand_drawn then
             blind.prepped = nil
         end
@@ -246,16 +261,6 @@ SMODS.Blind {
             return {
                 stay_flipped = true
             }
-        end
-    end,
-    disable = function(self)
-        for i = 1, #G.hand.cards do
-            if G.hand.cards[i].facing == 'back' then
-                G.hand.cards[i]:flip()
-            end
-        end
-        for _, playing_card in pairs(G.playing_cards) do
-            playing_card.ability.wheel_flipped = nil
         end
     end
 }
@@ -291,16 +296,16 @@ SMODS.Blind {
     boss = { min = 2 },
     boss_colour = HEX("c6e0eb"),
     calculate = function(self, blind, context)
+        if context.blind_disabled then
+            ease_discard(blind.effect.discards_sub)
+        end
+
         if blind.disabled then return end
 
         if context.setting_blind then
             blind.effect.discards_sub = G.GAME.current_round.discards_left
             ease_discard(-blind.effect.discards_sub)
         end
-    end,
-    disable = function(self)
-        local blind = G.GAME.blind
-        ease_discard(blind.effect.discards_sub)
     end
 }
 
@@ -324,18 +329,18 @@ SMODS.Blind {
     boss = { min = 1 },
     boss_colour = HEX("575757"),
     calculate = function(self, blind, context)
+        if context.blind_disabled then
+            G.hand:change_size(1)
+        end
+
         if blind.disabled then return end
+
+        if context.blind_defeated then
+            G.hand:change_size(1)
+        end
 
         if context.setting_blind then
             G.hand:change_size(-1)
-        end
-    end,
-    disable = function(self)
-        G.hand:change_size(1)
-    end,
-    defeat = function(self)
-        if not G.GAME.blind.disabled then
-            G.hand:change_size(1)
         end
     end
 }
@@ -379,11 +384,6 @@ SMODS.Blind {
     pos = { x = 0, y = 18 },
     boss = { min = 2 },
     boss_colour = HEX("ae718e"),
-    get_loc_debuff_text = function(self)
-        local blind = G.GAME.blind
-        return blind.loc_debuff_text ..
-            (blind.effect.only_hand and ' [' .. localize(blind.effect.only_hand, 'poker_hands') .. ']' or '')
-    end,
     calculate = function(self, blind, context)
         if blind.disabled then return end
         if context.setting_blind then
@@ -393,7 +393,9 @@ SMODS.Blind {
             if blind.effect.only_hand and blind.effect.only_hand ~= context.scoring_name then
                 blind.triggered = true
                 return {
-                    debuff = true
+                    debuff = true,
+                    debuff_text = blind.loc_debuff_text ..
+                        (blind.effect.only_hand and ' [' .. localize(blind.effect.only_hand, 'poker_hands') .. ']' or '')
                 }
             end
             if not context.check then
@@ -463,16 +465,16 @@ SMODS.Blind {
     boss = { min = 2 },
     boss_colour = HEX("5c6e31"),
     calculate = function(self, blind, context)
+        if context.blind_disabled then
+            ease_hands_played(blind.effect.hands_sub)
+        end
+
         if blind.disabled then return end
 
         if context.setting_blind then
             blind.effect.hands_sub = G.GAME.round_resets.hands - 1
             ease_hands_played(blind.effect.hands_sub)
         end
-    end,
-    disable = function(self)
-        local blind = G.GAME.blind
-        ease_hands_played(blind.effect.hands_sub)
     end
 }
 
@@ -569,6 +571,17 @@ SMODS.Blind {
     boss = { min = 2 },
     boss_colour = HEX("6a3847"),
     calculate = function(self, blind, context)
+        if context.blind_disabled then
+            for i = 1, #G.hand.cards do
+                if G.hand.cards[i].facing == 'back' then
+                    G.hand.cards[i]:flip()
+                end
+            end
+            for _, playing_card in pairs(G.playing_cards) do
+                playing_card.ability.wheel_flipped = nil
+            end
+        end
+
         if blind.disabled then return end
 
         if context.stay_flipped and context.to_area == G.hand and
@@ -576,16 +589,6 @@ SMODS.Blind {
             return {
                 stay_flipped = true
             }
-        end
-    end,
-    disable = function(self)
-        for i = 1, #G.hand.cards do
-            if G.hand.cards[i].facing == 'back' then
-                G.hand.cards[i]:flip()
-            end
-        end
-        for _, playing_card in pairs(G.playing_cards) do
-            playing_card.ability.wheel_flipped = nil
         end
     end
 }
@@ -681,9 +684,11 @@ SMODS.Blind {
     pos = { x = 0, y = 29 },
     boss = { showdown = true },
     boss_colour = HEX("8a71e1"),
-    disable = function(self)
-        G.GAME.blind.chips = G.GAME.blind.chips / 3
-        G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+    calculate = function(self, card, context)
+        if context.blind_disabled then
+            G.GAME.blind.chips = G.GAME.blind.chips / 3
+            G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+        end
     end
 }
 
@@ -696,6 +701,12 @@ SMODS.Blind {
     boss = { showdown = true },
     boss_colour = HEX("ac3232"),
     calculate = function(self, blind, context)
+        if context.blind_disabled or context.blind_defeated then
+            for _, joker in ipairs(G.jokers.cards) do
+                joker.ability.crimson_heart_chosen = nil
+            end
+        end
+
         if context.hand_drawn then
             blind.prepped = nil
         end
@@ -743,16 +754,6 @@ SMODS.Blind {
                 end
             end
         end
-    end,
-    disable = function(self)
-        for _, joker in ipairs(G.jokers.cards) do
-            joker.ability.crimson_heart_chosen = nil
-        end
-    end,
-    defeat = function(self)
-        for _, joker in ipairs(G.jokers.cards) do
-            joker.ability.crimson_heart_chosen = nil
-        end
     end
 }
 
@@ -765,6 +766,12 @@ SMODS.Blind {
     boss = { showdown = true },
     boss_colour = HEX("009cfd"),
     calculate = function(self, blind, context)
+        if context.blind_disabled or context.blind_defeated then
+            for _, playing_card in ipairs(G.playing_cards) do
+                playing_card.ability.forced_selection = nil
+            end
+        end
+
         if blind.disabled then return end
 
         if context.hand_drawn then
@@ -780,11 +787,6 @@ SMODS.Blind {
                 forced_card.ability.forced_selection = true
                 G.hand:add_to_highlighted(forced_card)
             end
-        end
-    end,
-    disable = function(self)
-        for _, playing_card in ipairs(G.playing_cards) do
-            playing_card.ability.forced_selection = nil
         end
     end
 }
