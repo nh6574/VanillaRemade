@@ -25,49 +25,49 @@ SMODS.Blind {
     boss = { min = 1 },
     boss_colour = HEX("a84024"),
     calculate = function(self, blind, context)
-        if not blind.disabled then
-            if context.press_play then
-                G.E_MANAGER:add_event(Event({
-                    func = function()
-                        local any_selected = nil
-                        local _cards = {}
-                        for _, playing_card in ipairs(G.hand.cards) do
-                            _cards[#_cards + 1] = playing_card
-                        end
-                        for i = 1, 2 do
-                            if G.hand.cards[i] then
-                                local selected_card, card_index = pseudorandom_element(_cards, 'vremade_hook')
-                                G.hand:add_to_highlighted(selected_card, true)
-                                table.remove(_cards, card_index)
-                                any_selected = true
-                                play_sound('card1', 1)
-                            end
-                        end
-                        if any_selected then G.FUNCS.discard_cards_from_highlighted(nil, true) end
-                        return true
+        if blind.disabled then return end
+
+        if context.press_play then
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    local any_selected = nil
+                    local _cards = {}
+                    for _, playing_card in ipairs(G.hand.cards) do
+                        _cards[#_cards + 1] = playing_card
                     end
-                }))
-                blind.triggered = true -- This won't trigger Matador in this context due to a Vanilla bug (a workaround is setting it in context.debuff_hand)
-                delay(0.7)
-                G.E_MANAGER:add_event(Event({
-                    trigger = 'immediate',
-                    func = (function()
-                        SMODS.juice_up_blind()
-                        G.E_MANAGER:add_event(Event({
-                            trigger = 'after',
-                            delay = 0.06 * G.SETTINGS.GAMESPEED,
-                            blockable = false,
-                            blocking = false,
-                            func = function()
-                                play_sound('tarot2', 0.76, 0.4); return true
-                            end
-                        }))
-                        play_sound('tarot2', 1, 0.4)
-                        return true
-                    end)
-                }))
-                delay(0.4)
-            end
+                    for i = 1, 2 do
+                        if G.hand.cards[i] then
+                            local selected_card, card_index = pseudorandom_element(_cards, 'vremade_hook')
+                            G.hand:add_to_highlighted(selected_card, true)
+                            table.remove(_cards, card_index)
+                            any_selected = true
+                            play_sound('card1', 1)
+                        end
+                    end
+                    if any_selected then G.FUNCS.discard_cards_from_highlighted(nil, true) end
+                    return true
+                end
+            }))
+            blind.triggered = true -- This won't trigger Matador in this context due to a Vanilla bug (a workaround is setting it in context.debuff_hand)
+            delay(0.7)
+            G.E_MANAGER:add_event(Event({
+                trigger = 'immediate',
+                func = (function()
+                    SMODS.juice_up_blind()
+                    G.E_MANAGER:add_event(Event({
+                        trigger = 'after',
+                        delay = 0.06 * G.SETTINGS.GAMESPEED,
+                        blockable = false,
+                        blocking = false,
+                        func = function()
+                            play_sound('tarot2', 0.76, 0.4); return true
+                        end
+                    }))
+                    play_sound('tarot2', 1, 0.4)
+                    return true
+                end)
+            }))
+            delay(0.4)
         end
     end
 }
@@ -87,15 +87,20 @@ SMODS.Blind {
         return { vars = { localize('ph_most_played') } }
     end,
     calculate = function(self, blind, context)
-        if not blind.disabled then
-            if context.debuff_hand then
-                blind.triggered = false
-                if context.scoring_name == G.GAME.current_round.most_played_poker_hand then
-                    blind.triggered = true
-                    if not context.check then
-                        ease_dollars(-G.GAME.dollars, true) -- `return {dollars = -G.GAME.dollars}` lacks the ability to set the amount instantly
-                        blind:wiggle()
-                    end
+        if blind.disabled then return end
+
+        if context.debuff_hand then
+            blind.triggered = false
+            if context.scoring_name == G.GAME.current_round.most_played_poker_hand then
+                blind.triggered = true
+                if not context.check then
+                    return {
+                        dollars = -G.GAME.dollars,
+                        instant = true,
+                        func = function()
+                            blind:wiggle()
+                        end
+                    }
                 end
             end
         end
@@ -111,13 +116,13 @@ SMODS.Blind {
     boss = { min = 2 },
     boss_colour = HEX("5186a8"),
     calculate = function(self, blind, context)
-        if not blind.disabled then
-            if context.stay_flipped and context.to_area == G.hand and
-                G.GAME.current_round.hands_played == 0 and G.GAME.current_round.discards_used == 0 then
-                return {
-                    stay_flipped = true
-                }
-            end
+        if blind.disabled then return end
+
+        if context.stay_flipped and context.to_area == G.hand and
+            G.GAME.current_round.hands_played == 0 and G.GAME.current_round.discards_used == 0 then
+            return {
+                stay_flipped = true
+            }
         end
     end,
     disable = function(self)
@@ -162,13 +167,13 @@ SMODS.Blind {
         return { vars = { '1' } }
     end,
     calculate = function(self, blind, context)
-        if not blind.disabled then
-            if context.stay_flipped and context.to_area == G.hand and
-                SMODS.pseudorandom_probability(blind, 'vremade_wheel', 1, 7) then
-                return {
-                    stay_flipped = true
-                }
-            end
+        if blind.disabled then return end
+
+        if context.stay_flipped and context.to_area == G.hand and
+            SMODS.pseudorandom_probability(blind, 'vremade_wheel', 1, 7) then
+            return {
+                stay_flipped = true
+            }
         end
     end,
     disable = function(self)
@@ -192,16 +197,16 @@ SMODS.Blind {
     boss = { min = 2 },
     boss_colour = HEX("6865f3"),
     calculate = function(self, blind, context)
-        if not blind.disabled then
-            if context.debuff_hand then
-                blind.triggered = false
-                if G.GAME.hands[context.scoring_name].level > 1 then
-                    blind.triggered = true
-                    if not context.check then
-                        return {
-                            level_up = -1
-                        }
-                    end
+        if blind.disabled then return end
+
+        if context.debuff_hand then
+            blind.triggered = false
+            if G.GAME.hands[context.scoring_name].level > 1 then
+                blind.triggered = true
+                if not context.check then
+                    return {
+                        level_up = -1
+                    }
                 end
             end
         end
@@ -228,18 +233,19 @@ SMODS.Blind {
     boss = { min = 2 },
     boss_colour = HEX("3e85bd"),
     calculate = function(self, blind, context)
-        if not blind.disabled then
-            if context.press_play then
-                blind.prepped = true
-            end
-            if context.stay_flipped and context.to_area == G.hand and blind.prepped then
-                return {
-                    stay_flipped = true
-                }
-            end
-        end
         if context.setting_blind or context.hand_drawn then
             blind.prepped = nil
+        end
+
+        if blind.disabled then return end
+
+        if context.press_play then
+            blind.prepped = true
+        end
+        if context.stay_flipped and context.to_area == G.hand and blind.prepped then
+            return {
+                stay_flipped = true
+            }
         end
     end,
     disable = function(self)
@@ -285,15 +291,16 @@ SMODS.Blind {
     boss = { min = 2 },
     boss_colour = HEX("c6e0eb"),
     calculate = function(self, blind, context)
-        if not blind.disabled then
-            if context.setting_blind then
-                blind.discards_sub = G.GAME.current_round.discards_left
-                ease_discard(-blind.discards_sub)
-            end
+        if blind.disabled then return end
+
+        if context.setting_blind then
+            blind.effect.discards_sub = G.GAME.current_round.discards_left
+            ease_discard(-blind.effect.discards_sub)
         end
     end,
     disable = function(self)
-        ease_discard(G.GAME.blind.discards_sub)
+        local blind = G.GAME.blind
+        ease_discard(blind.effect.discards_sub)
     end
 }
 
@@ -317,10 +324,10 @@ SMODS.Blind {
     boss = { min = 1 },
     boss_colour = HEX("575757"),
     calculate = function(self, blind, context)
-        if not blind.disabled then
-            if context.setting_blind then
-                G.hand:change_size(-1)
-            end
+        if blind.disabled then return end
+
+        if context.setting_blind then
+            G.hand:change_size(-1)
         end
     end,
     disable = function(self)
@@ -342,23 +349,23 @@ SMODS.Blind {
     boss = { min = 3 },
     boss_colour = HEX("4b71e4"),
     calculate = function(self, blind, context)
-        if not blind.disabled then
-            if context.setting_blind then
-                blind.hands = {}
-                for _, poker_hand in ipairs(G.handlist) do
-                    blind.hands[poker_hand] = false
-                end
+        if blind.disabled then return end
+
+        if context.setting_blind then
+            blind.effect.hands = {}
+            for _, poker_hand in ipairs(G.handlist) do
+                blind.effect.hands[poker_hand] = false
             end
-            if context.debuff_hand then
-                if blind.hands[context.scoring_name] then
-                    blind.triggered = true
-                    return {
-                        debuff = true
-                    }
-                end
-                if not context.check then
-                    blind.hands[context.scoring_name] = true
-                end
+        end
+        if context.debuff_hand then
+            if blind.effect.hands[context.scoring_name] then
+                blind.triggered = true
+                return {
+                    debuff = true
+                }
+            end
+            if not context.check then
+                blind.effect.hands[context.scoring_name] = true
             end
         end
     end
@@ -373,24 +380,24 @@ SMODS.Blind {
     boss = { min = 2 },
     boss_colour = HEX("ae718e"),
     get_loc_debuff_text = function(self)
-        return G.GAME.blind.loc_debuff_text ..
-            (G.GAME.blind.only_hand and ' [' .. localize(G.GAME.blind.only_hand, 'poker_hands') .. ']' or '')
+        local blind = G.GAME.blind
+        return blind.loc_debuff_text ..
+            (blind.effect.only_hand and ' [' .. localize(blind.effect.only_hand, 'poker_hands') .. ']' or '')
     end,
     calculate = function(self, blind, context)
-        if not blind.disabled then
-            if context.setting_blind then
-                blind.only_hand = false
+        if blind.disabled then return end
+        if context.setting_blind then
+            blind.only_hand = false
+        end
+        if context.debuff_hand then
+            if blind.effect.only_hand and blind.effect.only_hand ~= context.scoring_name then
+                blind.triggered = true
+                return {
+                    debuff = true
+                }
             end
-            if context.debuff_hand then
-                if blind.only_hand and blind.only_hand ~= context.scoring_name then
-                    blind.triggered = true
-                    return {
-                        debuff = true
-                    }
-                end
-                if not context.check then
-                    blind.only_hand = context.scoring_name
-                end
+            if not context.check then
+                blind.effect.only_hand = context.scoring_name
             end
         end
     end
@@ -417,12 +424,12 @@ SMODS.Blind {
     boss_colour = HEX("439a4f"),
     modifies_draw = true, -- SMODS addition, you need this if the blind modifies the draws
     calculate = function(self, blind, context)
-        if not blind.disabled then
-            if context.drawing_cards and (G.GAME.current_round.hands_played ~= 0 or G.GAME.current_round.discards_used ~= 0) then
-                return {
-                    cards_to_draw = 3
-                }
-            end
+        if blind.disabled then return end
+
+        if context.drawing_cards and (G.GAME.current_round.hands_played ~= 0 or G.GAME.current_round.discards_used ~= 0) then
+            return {
+                cards_to_draw = 3
+            }
         end
     end
 }
@@ -436,12 +443,13 @@ SMODS.Blind {
     boss = { min = 1 },
     boss_colour = HEX("7e6752"),
     calculate = function(self, blind, context)
-        if not blind.disabled then
-            if context.debuff_card and context.debuff_card.area ~= G.jokers and context.debuff_card.ability.played_this_ante then
-                return {
-                    debuff = true
-                }
-            end
+        if blind.disabled then return end
+
+        if context.debuff_card and context.debuff_card.area ~= G.jokers and
+            context.debuff_card.ability.played_this_ante then
+            return {
+                debuff = true
+            }
         end
     end
 }
@@ -455,15 +463,16 @@ SMODS.Blind {
     boss = { min = 2 },
     boss_colour = HEX("5c6e31"),
     calculate = function(self, blind, context)
-        if not blind.disabled then
-            if context.setting_blind then
-                G.GAME.blind.hands_sub = G.GAME.round_resets.hands - 1
-                ease_hands_played(-G.GAME.blind.hands_sub)
-            end
+        if blind.disabled then return end
+
+        if context.setting_blind then
+            blind.effect.hands_sub = G.GAME.round_resets.hands - 1
+            ease_hands_played(blind.effect.hands_sub)
         end
     end,
     disable = function(self)
-        ease_hands_played(G.GAME.blind.hands_sub)
+        local blind = G.GAME.blind
+        ease_hands_played(blind.effect.hands_sub)
     end
 }
 
@@ -487,46 +496,46 @@ SMODS.Blind {
     boss = { min = 3 },
     boss_colour = HEX("b52d2d"),
     calculate = function(self, blind, context)
-        if not blind.disabled then
-            if context.press_play then
-                G.E_MANAGER:add_event(Event({
-                    trigger = 'after',
-                    delay = 0.2,
-                    func = function()
-                        for i = 1, #G.play.cards do
-                            G.E_MANAGER:add_event(Event({
-                                func = function()
-                                    G.play.cards[i]:juice_up()
-                                    return true
-                                end,
-                            }))
-                            ease_dollars(-1)
-                            delay(0.23)
-                        end
-                        return true
-                    end
-                }))
-                blind.triggered = true -- This won't trigger Matador in this context due to a Vanilla bug (a workaround is setting it in context.debuff_hand)
-                G.E_MANAGER:add_event(Event({
-                    trigger = 'immediate',
-                    func = (function()
-                        SMODS.juice_up_blind()
+        if blind.disabled then return end
+
+        if context.press_play then
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.2,
+                func = function()
+                    for i = 1, #G.play.cards do
                         G.E_MANAGER:add_event(Event({
-                            trigger = 'after',
-                            delay = 0.06 * G.SETTINGS.GAMESPEED,
-                            blockable = false,
-                            blocking = false,
                             func = function()
-                                play_sound('tarot2', 0.76, 0.4)
+                                G.play.cards[i]:juice_up()
                                 return true
-                            end
+                            end,
                         }))
-                        play_sound('tarot2', 1, 0.4)
-                        return true
-                    end)
-                }))
-                delay(0.4)
-            end
+                        ease_dollars(-1)
+                        delay(0.23)
+                    end
+                    return true
+                end
+            }))
+            blind.triggered = true -- This won't trigger Matador in this context due to a Vanilla bug (a workaround is setting it in context.debuff_hand)
+            G.E_MANAGER:add_event(Event({
+                trigger = 'immediate',
+                func = (function()
+                    SMODS.juice_up_blind()
+                    G.E_MANAGER:add_event(Event({
+                        trigger = 'after',
+                        delay = 0.06 * G.SETTINGS.GAMESPEED,
+                        blockable = false,
+                        blocking = false,
+                        func = function()
+                            play_sound('tarot2', 0.76, 0.4)
+                            return true
+                        end
+                    }))
+                    play_sound('tarot2', 1, 0.4)
+                    return true
+                end)
+            }))
+            delay(0.4)
         end
     end
 }
@@ -540,13 +549,13 @@ SMODS.Blind {
     boss = { min = 2 },
     boss_colour = HEX("e56a2f"),
     calculate = function(self, blind, context)
-        if not blind.disabled then
-            if context.modify_hand then
-                blind.triggered = true -- This won't trigger Matador in this context due to a Vanilla bug (a workaround is setting it in context.debuff_hand)
-                mult = mod_mult(math.max(math.floor(mult * 0.5 + 0.5), 1))
-                hand_chips = mod_chips(math.max(math.floor(hand_chips * 0.5 + 0.5), 0))
-                update_hand_text({ sound = 'chips2', modded = true }, { chips = hand_chips, mult = mult })
-            end
+        if blind.disabled then return end
+
+        if context.modify_hand then
+            blind.triggered = true -- This won't trigger Matador in this context due to a Vanilla bug (a workaround is setting it in context.debuff_hand)
+            mult = mod_mult(math.max(math.floor(mult * 0.5 + 0.5), 1))
+            hand_chips = mod_chips(math.max(math.floor(hand_chips * 0.5 + 0.5), 0))
+            update_hand_text({ sound = 'chips2', modded = true }, { chips = hand_chips, mult = mult })
         end
     end
 }
@@ -560,13 +569,13 @@ SMODS.Blind {
     boss = { min = 2 },
     boss_colour = HEX("6a3847"),
     calculate = function(self, blind, context)
-        if not blind.disabled then
-            if context.stay_flipped and context.to_area == G.hand and
-                context.other_card:is_face(true) then
-                return {
-                    stay_flipped = true
-                }
-            end
+        if blind.disabled then return end
+
+        if context.stay_flipped and context.to_area == G.hand and
+            context.other_card:is_face(true) then
+            return {
+                stay_flipped = true
+            }
         end
     end,
     disable = function(self)
@@ -590,46 +599,46 @@ SMODS.Blind {
     boss = { showdown = true },
     boss_colour = HEX("fda200"),
     calculate = function(self, blind, context)
-        if not blind.disabled then
-            if context.setting_blind then
-                if #G.jokers.cards > 0 then
-                    G.jokers:unhighlight_all()
-                    for _, joker in ipairs(G.jokers.cards) do
-                        joker:flip()
-                    end
-                    if #G.jokers.cards > 1 then
-                        G.E_MANAGER:add_event(Event({
-                            trigger = 'after',
-                            delay = 0.2,
-                            func = function()
-                                G.E_MANAGER:add_event(Event({
-                                    func = function()
-                                        G.jokers:shuffle('aajk')
-                                        play_sound('cardSlide1', 0.85)
-                                        return true
-                                    end,
-                                }))
-                                delay(0.15)
-                                G.E_MANAGER:add_event(Event({
-                                    func = function()
-                                        G.jokers:shuffle('aajk')
-                                        play_sound('cardSlide1', 1.15)
-                                        return true
-                                    end
-                                }))
-                                delay(0.15)
-                                G.E_MANAGER:add_event(Event({
-                                    func = function()
-                                        G.jokers:shuffle('aajk')
-                                        play_sound('cardSlide1', 1)
-                                        return true
-                                    end
-                                }))
-                                delay(0.5)
-                                return true
-                            end
-                        }))
-                    end
+        if blind.disabled then return end
+
+        if context.setting_blind then
+            if #G.jokers.cards > 0 then
+                G.jokers:unhighlight_all()
+                for _, joker in ipairs(G.jokers.cards) do
+                    joker:flip()
+                end
+                if #G.jokers.cards > 1 then
+                    G.E_MANAGER:add_event(Event({
+                        trigger = 'after',
+                        delay = 0.2,
+                        func = function()
+                            G.E_MANAGER:add_event(Event({
+                                func = function()
+                                    G.jokers:shuffle('aajk')
+                                    play_sound('cardSlide1', 0.85)
+                                    return true
+                                end,
+                            }))
+                            delay(0.15)
+                            G.E_MANAGER:add_event(Event({
+                                func = function()
+                                    G.jokers:shuffle('aajk')
+                                    play_sound('cardSlide1', 1.15)
+                                    return true
+                                end
+                            }))
+                            delay(0.15)
+                            G.E_MANAGER:add_event(Event({
+                                func = function()
+                                    G.jokers:shuffle('aajk')
+                                    play_sound('cardSlide1', 1)
+                                    return true
+                                end
+                            }))
+                            delay(0.5)
+                            return true
+                        end
+                    }))
                 end
             end
         end
@@ -645,21 +654,21 @@ SMODS.Blind {
     boss = { showdown = true },
     boss_colour = HEX("56a786"),
     calculate = function(self, blind, context)
-        if not blind.disabled then
-            if context.debuff_card and context.debuff_card.area ~= G.jokers then
-                return {
-                    debuff = true
-                }
-            end
-            if context.selling_card and context.card.ability.set == 'Joker' then
-                G.E_MANAGER:add_event(Event({
-                    trigger = 'immediate',
-                    func = function()
-                        blind:disable()
-                        return true
-                    end
-                }))
-            end
+        if blind.disabled then return end
+
+        if context.debuff_card and context.debuff_card.area ~= G.jokers then
+            return {
+                debuff = true
+            }
+        end
+        if context.selling_card and context.card.ability.set == 'Joker' then
+            G.E_MANAGER:add_event(Event({
+                trigger = 'immediate',
+                func = function()
+                    blind:disable()
+                    return true
+                end
+            }))
         end
     end
 }
@@ -687,51 +696,52 @@ SMODS.Blind {
     boss = { showdown = true },
     boss_colour = HEX("ac3232"),
     calculate = function(self, blind, context)
-        if not blind.disabled then
-            if context.debuff_card and context.debuff_card.area == G.jokers then
-                if context.debuff_card.ability.crimson_heart_chosen then
-                    return {
-                        debuff = true
-                    }
-                end
-            end
-            if context.press_play and G.jokers.cards[1] then
-                blind.triggered = true -- This won't trigger Matador in this context due to a Vanilla bug (a workaround is setting it in context.debuff_hand)
-                blind.prepped = true
-            end
-            if context.hand_drawn then
-                if blind.prepped and G.jokers.cards[1] then
-                    local prev_chosen_set = {}
-                    local fallback_jokers = {}
-                    local jokers = {}
-                    for i = 1, #G.jokers.cards do
-                        if G.jokers.cards[i].ability.crimson_heart_chosen then
-                            prev_chosen_set[G.jokers.cards[i]] = true
-                            G.jokers.cards[i].ability.crimson_heart_chosen = nil
-                            if G.jokers.cards[i].debuff then SMODS.recalc_debuff(G.jokers.cards[i]) end
-                        end
-                    end
-                    for i = 1, #G.jokers.cards do
-                        if not G.jokers.cards[i].debuff then
-                            if not prev_chosen_set[G.jokers.cards[i]] then
-                                jokers[#jokers + 1] = G.jokers.cards[i]
-                            end
-                            table.insert(fallback_jokers, G.jokers.cards[i])
-                        end
-                    end
-                    if #jokers == 0 then jokers = fallback_jokers end
-                    local _card = pseudorandom_element(jokers, 'vremade_crimson_heart')
-                    if _card then
-                        _card.ability.crimson_heart_chosen = true
-                        SMODS.recalc_debuff(_card)
-                        _card:juice_up()
-                        blind:wiggle()
-                    end
-                end
-            end
-        end
         if context.hand_drawn then
             blind.prepped = nil
+        end
+
+        if blind.disabled then return end
+
+        if context.debuff_card and context.debuff_card.area == G.jokers then
+            if context.debuff_card.ability.crimson_heart_chosen then
+                return {
+                    debuff = true
+                }
+            end
+        end
+        if context.press_play and G.jokers.cards[1] then
+            blind.triggered = true -- This won't trigger Matador in this context due to a Vanilla bug (a workaround is setting it in context.debuff_hand)
+            blind.prepped = true
+        end
+        if context.hand_drawn then
+            if blind.prepped and G.jokers.cards[1] then
+                local prev_chosen_set = {}
+                local fallback_jokers = {}
+                local jokers = {}
+                for i = 1, #G.jokers.cards do
+                    if G.jokers.cards[i].ability.crimson_heart_chosen then
+                        prev_chosen_set[G.jokers.cards[i]] = true
+                        G.jokers.cards[i].ability.crimson_heart_chosen = nil
+                        if G.jokers.cards[i].debuff then SMODS.recalc_debuff(G.jokers.cards[i]) end
+                    end
+                end
+                for i = 1, #G.jokers.cards do
+                    if not G.jokers.cards[i].debuff then
+                        if not prev_chosen_set[G.jokers.cards[i]] then
+                            jokers[#jokers + 1] = G.jokers.cards[i]
+                        end
+                        table.insert(fallback_jokers, G.jokers.cards[i])
+                    end
+                end
+                if #jokers == 0 then jokers = fallback_jokers end
+                local _card = pseudorandom_element(jokers, 'vremade_crimson_heart')
+                if _card then
+                    _card.ability.crimson_heart_chosen = true
+                    SMODS.recalc_debuff(_card)
+                    _card:juice_up()
+                    blind:wiggle()
+                end
+            end
         end
     end,
     disable = function(self)
@@ -755,20 +765,20 @@ SMODS.Blind {
     boss = { showdown = true },
     boss_colour = HEX("009cfd"),
     calculate = function(self, blind, context)
-        if not blind.disabled then
-            if context.hand_drawn then
-                local any_forced = nil
-                for _, playing_card in ipairs(G.hand.cards) do
-                    if playing_card.ability.forced_selection then
-                        any_forced = true
-                    end
+        if blind.disabled then return end
+
+        if context.hand_drawn then
+            local any_forced = nil
+            for _, playing_card in ipairs(G.hand.cards) do
+                if playing_card.ability.forced_selection then
+                    any_forced = true
                 end
-                if not any_forced then
-                    G.hand:unhighlight_all()
-                    local forced_card = pseudorandom_element(G.hand.cards, 'vremade_cerulean_bell')
-                    forced_card.ability.forced_selection = true
-                    G.hand:add_to_highlighted(forced_card)
-                end
+            end
+            if not any_forced then
+                G.hand:unhighlight_all()
+                local forced_card = pseudorandom_element(G.hand.cards, 'vremade_cerulean_bell')
+                forced_card.ability.forced_selection = true
+                G.hand:add_to_highlighted(forced_card)
             end
         end
     end,
