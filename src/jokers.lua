@@ -2889,7 +2889,7 @@ SMODS.Joker {
 
 -- Seltzer
 SMODS.Joker {
-    key = "selzer",
+    key = "selzer", -- (sic)
     blueprint_compat = true,
     eternal_compat = false,
     rarity = 2,
