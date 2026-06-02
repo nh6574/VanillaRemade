@@ -682,8 +682,8 @@ SMODS.Voucher {
     check_for_unlock = function(self, args)
         if args.type == 'blind_discoveries' then
             local discovered_blinds = 0
-            for k, v in pairs(G.P_BLINDS) do
-                if v.discovered then
+            for _, blind_prototype in pairs(G.P_BLINDS) do
+                if blind_prototype.discovered then
                     discovered_blinds = discovered_blinds + 1
                 end
             end

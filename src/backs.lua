@@ -145,8 +145,8 @@ SMODS.Back {
         delay(0.4)
         G.E_MANAGER:add_event(Event({
             func = function()
-                for k, v in ipairs(self.config.consumables) do
-                    SMODS.add_card({ key = v })
+                for _, consumable_key in ipairs(self.config.consumables) do
+                    SMODS.add_card({ key = consumable_key })
                 end
                 return true
             end
@@ -227,8 +227,8 @@ SMODS.Back {
         delay(0.4)
         G.E_MANAGER:add_event(Event({
             func = function()
-                for k, v in ipairs(self.config.consumables) do
-                    SMODS.add_card({ key = v })
+                for _, consumable_key in ipairs(self.config.consumables) do
+                    SMODS.add_card({ key = consumable_key })
                 end
                 return true
             end
@@ -325,12 +325,12 @@ SMODS.Back {
     -- The following is how the implementation would be
     --[[
     apply = function(self, back)
-        for k, v in pairs(self.config.vouchers) do
-            G.GAME.used_vouchers[v] = true
+        for _, voucher_key in pairs(self.config.vouchers) do
+            G.GAME.used_vouchers[voucher_key] = true
             G.GAME.starting_voucher_count = (G.GAME.starting_voucher_count or 0) + 1
             G.E_MANAGER:add_event(Event({
                 func = function()
-                    Card.apply_to_run(nil, G.P_CENTERS[v])
+                    Card.apply_to_run(nil, G.P_CENTERS[voucher_key])
                     return true
                 end
             }))

@@ -2820,8 +2820,8 @@ SMODS.Joker {
 local function reset_vremade_ancient_card()
     G.GAME.current_round.vremade_ancient_card = G.GAME.current_round.vremade_ancient_card or { suit = 'Spades' }
     local ancient_suits = {}
-    for k, v in ipairs({ 'Spades', 'Hearts', 'Clubs', 'Diamonds' }) do
-        if v ~= G.GAME.current_round.vremade_ancient_card.suit then ancient_suits[#ancient_suits + 1] = v end
+    for _, suit_key in ipairs({ 'Spades', 'Hearts', 'Clubs', 'Diamonds' }) do
+        if suit_key ~= G.GAME.current_round.vremade_ancient_card.suit then ancient_suits[#ancient_suits + 1] = suit_key end
     end
     local ancient_card = pseudorandom_element(ancient_suits, 'vremade_ancient' .. G.GAME.round_resets.ante)
     G.GAME.current_round.vremade_ancient_card.suit = ancient_card
@@ -4348,13 +4348,18 @@ SMODS.Joker {
     config = { extra = { dollars = 1 } },
     loc_vars = function(self, info_queue, card)
         local planets_used = 0
-        for k, v in pairs(G.GAME.consumeable_usage) do if v.set == 'Planet' then planets_used = planets_used + 1 end end
+        for _, consumable_data in pairs(G.GAME.consumeable_usage) do
+            if consumable_data.set == 'Planet' then
+                planets_used =
+                    planets_used + 1
+            end
+        end
         return { vars = { card.ability.extra.dollars, planets_used * card.ability.extra.dollars } }
     end,
     calc_dollar_bonus = function(self, card)
         local planets_used = 0
-        for k, v in pairs(G.GAME.consumeable_usage) do
-            if v.set == 'Planet' then planets_used = planets_used + 1 end
+        for _, consumable_data in pairs(G.GAME.consumeable_usage) do
+            if consumable_data.set == 'Planet' then planets_used = planets_used + 1 end
         end
         return planets_used > 0 and planets_used * card.ability.extra.dollars or nil
     end,
@@ -4506,8 +4511,8 @@ SMODS.Joker {
     add_to_deck = function(self, card, from_debuff)
         G.E_MANAGER:add_event(Event({
             func = function()
-                for k, v in pairs(G.I.CARD) do
-                    if v.set_cost then v:set_cost() end
+                for _, other_card in pairs(G.I.CARD) do
+                    if other_card.set_cost then other_card:set_cost() end
                 end
                 return true
             end
@@ -4516,8 +4521,8 @@ SMODS.Joker {
     remove_from_deck = function(self, card, from_debuff)
         G.E_MANAGER:add_event(Event({
             func = function()
-                for k, v in pairs(G.I.CARD) do
-                    if v.set_cost then v:set_cost() end
+                for _, other_card in pairs(G.I.CARD) do
+                    if other_card.set_cost then other_card:set_cost() end
                 end
                 return true
             end
