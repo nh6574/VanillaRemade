@@ -223,7 +223,7 @@ SMODS.Tag {
     apply = function(self, tag, context)
         if context.type == 'voucher_add' then
             tag:yep('+', G.C.SECONDARY_SET.Voucher, function()
-                local voucher = SMODS.add_voucher_to_shop()
+                local voucher = SMODS.add_voucher_to_shop(nil, true)
                 voucher.from_tag = true
                 return true
             end)
