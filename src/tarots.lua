@@ -832,7 +832,7 @@ SMODS.Consumable {
                 delay = 0.1,
                 func = function()
                     if G.hand.highlighted[i] ~= rightmost then
-                        copy_card(rightmost, G.hand.highlighted[i])
+                        SMODS.copy_card(rightmost, { new_card = G.hand.highlighted[i] })
                     end
                     return true
                 end

@@ -1292,12 +1292,7 @@ SMODS.Joker {
             juice_card_until(card, eval, true)
         end
         if context.before and G.GAME.current_round.hands_played == 0 and #context.full_hand == 1 then
-            G.playing_card = (G.playing_card and G.playing_card + 1) or 1
-            local card_copied = copy_card(context.full_hand[1], nil, nil, G.playing_card)
-            card_copied:add_to_deck()
-            G.deck.config.card_limit = G.deck.config.card_limit + 1
-            table.insert(G.playing_cards, card_copied)
-            G.hand:emplace(card_copied)
+            local card_copied = SMODS.copy_card(context.full_hand[1])
             card_copied.states.visible = nil
 
             G.E_MANAGER:add_event(Event({
@@ -4250,12 +4245,9 @@ SMODS.Joker {
             if #jokers > 0 then
                 if #G.jokers.cards <= G.jokers.config.card_limit then
                     local chosen_joker = pseudorandom_element(jokers, 'vremade_invisible')
-                    local copied_joker = copy_card(chosen_joker, nil, nil, nil,
-                        chosen_joker.edition and chosen_joker.edition.negative)
+                    local copied_joker = SMODS.copy_card(chosen_joker, {strip_edition = chosen_joker.edition and chosen_joker.edition.negative})
                     if copied_joker.ability.invis_rounds then copied_joker.ability.invis_rounds = 0 end
                     if type(copied_joker.ability.extra) == "table" and copied_joker.ability.extra.invis_rounds then copied_joker.ability.extra.invis_rounds = 0 end
-                    copied_joker:add_to_deck()
-                    G.jokers:emplace(copied_joker)
                     return { message = localize('k_duplicated_ex') }
                 else
                     return { message = localize('k_no_room_ex') }
@@ -4756,10 +4748,8 @@ SMODS.Joker {
             G.E_MANAGER:add_event(Event({
                 func = function()
                     local card_to_copy, _ = pseudorandom_element(G.consumeables.cards, 'vremade_perkeo')
-                    local copied_card = copy_card(card_to_copy)
+                    local copied_card = SMODS.copy_card(card_to_copy)
                     copied_card:set_edition("e_negative", true)
-                    copied_card:add_to_deck()
-                    G.consumeables:emplace(copied_card)
                     return true
                 end
             }))

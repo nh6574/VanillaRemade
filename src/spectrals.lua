@@ -578,14 +578,8 @@ SMODS.Consumable {
             trigger = 'before',
             delay = 0.4,
             func = function()
-                local copied_joker = copy_card(chosen_joker, nil, nil, nil,
-                    chosen_joker.edition and chosen_joker.edition.negative)
+                local copied_joker = SMODS.copy_card(chosen_joker, {strip_edition = chosen_joker.edition and chosen_joker.edition.negative})
                 copied_joker:start_materialize()
-                copied_joker:add_to_deck()
-                if copied_joker.edition and copied_joker.edition.negative then
-                    copied_joker:set_edition(nil, true)
-                end
-                G.jokers:emplace(copied_joker)
                 return true
             end
         }))
@@ -825,12 +819,7 @@ SMODS.Consumable {
                 local _first_dissolve = nil
                 local new_cards = {}
                 for i = 1, card.ability.extra.cards do
-                    G.playing_card = (G.playing_card and G.playing_card + 1) or 1
-                    local _card = copy_card(G.hand.highlighted[1], nil, nil, G.playing_card)
-                    _card:add_to_deck()
-                    G.deck.config.card_limit = G.deck.config.card_limit + 1
-                    table.insert(G.playing_cards, _card)
-                    G.hand:emplace(_card)
+                    local _card = SMODS.copy_card(G.hand.highlighted[1])
                     _card:start_materialize(nil, _first_dissolve)
                     _first_dissolve = true
                     new_cards[#new_cards + 1] = _card
