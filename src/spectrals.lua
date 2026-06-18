@@ -578,7 +578,8 @@ SMODS.Consumable {
             trigger = 'before',
             delay = 0.4,
             func = function()
-                local copied_joker = SMODS.copy_card(chosen_joker, {strip_edition = chosen_joker.edition and chosen_joker.edition.negative})
+                local copied_joker = SMODS.copy_card(chosen_joker,
+                    { strip_edition = chosen_joker.edition and chosen_joker.edition.negative })
                 copied_joker:start_materialize()
                 return true
             end
@@ -889,8 +890,8 @@ SMODS.DrawStep {
                 We are using vanilla's G.shared_soul sprite, but you can recreate this with your own sprite by using this
 
                 if not G.vremade_shared_soul then
-                    G.vremade_shared_soul = Sprite(0, 0, G.CARD_W, G.CARD_H,
-                        G.ASSET_ATLAS["centers"], -- use "modprefix_key" for your own atlas
+                    G.vremade_shared_soul = SMODS.create_sprite(0, 0, G.CARD_W, G.CARD_H,
+                        "centers", -- use "modprefix_key" for your own atlas
                         { x = 0, y = 1 } -- atlas pos
                     )
                 end
