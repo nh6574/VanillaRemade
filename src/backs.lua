@@ -162,7 +162,7 @@ SMODS.Back {
         return { vars = { other_name } }
     end,
     check_for_unlock = function(self, args)
-        return args.type == 'win_deck' and get_deck_win_stake('b_red') and true
+        return args.type == 'win_deck' and get_deck_win_stake('b_red') > 0
     end
 }
 
@@ -203,7 +203,7 @@ SMODS.Back {
         return { vars = { other_name } }
     end,
     check_for_unlock = function(self, args)
-        return args.type == 'win_deck' and get_deck_win_stake('b_blue') and true
+        return args.type == 'win_deck' and get_deck_win_stake('b_blue') > 0
     end
 }
 
@@ -244,7 +244,7 @@ SMODS.Back {
         return { vars = { other_name } }
     end,
     check_for_unlock = function(self, args)
-        return args.type == 'win_deck' and get_deck_win_stake('b_yellow') and true
+        return args.type == 'win_deck' and get_deck_win_stake('b_yellow') > 0
     end
 }
 
@@ -303,7 +303,7 @@ SMODS.Back {
         return { vars = { other_name } }
     end,
     check_for_unlock = function(self, args)
-        return args.type == 'win_deck' and get_deck_win_stake('b_black') > 1
+        return args.type == 'win_deck' and get_deck_win_stake('b_black') > 0
     end
 }
 
