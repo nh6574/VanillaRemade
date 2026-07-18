@@ -368,7 +368,7 @@ SMODS.Consumable {
         delay(0.5)
     end,
     can_use = function(self, card)
-        return G.hand and #G.hand.cards > 0
+        return G.hand and #G.hand.cards > 1
     end,
     draw = function(self, card, layer)
         -- This is for the Spectral shader. You don't need this with `set = "Spectral"`
@@ -434,7 +434,7 @@ SMODS.Consumable {
         delay(0.5)
     end,
     can_use = function(self, card)
-        return G.hand and #G.hand.cards > 0
+        return G.hand and #G.hand.cards > 1
     end,
     draw = function(self, card, layer)
         -- This is for the Spectral shader. You don't need this with `set = "Spectral"`
@@ -524,7 +524,7 @@ SMODS.Consumable {
         delay(0.3)
     end,
     can_use = function(self, card)
-        return G.hand and #G.hand.cards > 0
+        return G.hand and #G.hand.cards > 1
     end,
     draw = function(self, card, layer)
         -- This is for the Spectral shader. You don't need this with `set = "Spectral"`
