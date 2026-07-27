@@ -2,7 +2,7 @@
 -- if you want to create a regular Spectral ignore this and use set = "Spectral"
 SMODS.ConsumableType {
     key = 'vremade_Spectral',
-    default = 'vremade_familiar',
+    default = 'c_vremade_familiar',
     collection_rows = { 4, 5 },
     primary_colour = G.C.SET.Spectral,
     secondary_colour = G.C.SECONDARY_SET.Spectral
