@@ -10,7 +10,7 @@ SMODS.ConsumableType {
 }
 --[[
     You can add a card from this ConsumableType just like you would do a normal consumable using
-    `SMODS.add_card{set = "vremade_Tarot"}
+    SMODS.add_card{set = "vremade_Tarot"}
 --]]
 
 -- The Fool
