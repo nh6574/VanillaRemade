@@ -6,6 +6,6 @@ This is not meant to be a tutorial or explained example mod like [these ones](ht
 
 The objective is not to recreate vanilla code 1-to-1 but to highlight best practices. So while effects should be practically the same, there might be some small differences.
 
-Please make sure to check the [SMODS documentation](https://github.com/Steamodded/smods/wiki) and [VanillaRemade wiki](https://github.com/nh6574/VanillaRemade/wiki) as well for more information and guides.
+Please make sure to check the [SMODS documentation](https://docs.smods.dev/) and [VanillaRemade wiki](https://github.com/nh6574/VanillaRemade/wiki) as well for more information and guides.
 
 Please report any issues to <https://github.com/nh6574/VanillaRemade/issues>, thanks.
