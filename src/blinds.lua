@@ -707,10 +707,6 @@ SMODS.Blind {
             end
         end
 
-        if context.hand_drawn then
-            blind.prepped = nil
-        end
-
         if blind.disabled then return end
 
         if context.debuff_card and context.debuff_card.area == G.jokers then
@@ -753,6 +749,7 @@ SMODS.Blind {
                     blind:wiggle()
                 end
             end
+            blind.prepped = nil
         end
     end
 }
