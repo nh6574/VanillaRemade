@@ -1292,7 +1292,7 @@ SMODS.Joker {
             juice_card_until(card, eval, true)
         end
         if context.before and G.GAME.current_round.hands_played == 0 and #context.full_hand == 1 then
-            local card_copied = SMODS.copy_card(context.full_hand[1])
+            local card_copied = SMODS.copy_card(context.full_hand[1], { area = G.hand })
             card_copied.states.visible = nil
 
             G.E_MANAGER:add_event(Event({
@@ -4245,7 +4245,8 @@ SMODS.Joker {
             if #jokers > 0 then
                 if #G.jokers.cards <= G.jokers.config.card_limit then
                     local chosen_joker = pseudorandom_element(jokers, 'vremade_invisible')
-                    local copied_joker = SMODS.copy_card(chosen_joker, {strip_edition = chosen_joker.edition and chosen_joker.edition.negative})
+                    local copied_joker = SMODS.copy_card(chosen_joker,
+                        { strip_edition = chosen_joker.edition and chosen_joker.edition.negative })
                     if copied_joker.ability.invis_rounds then copied_joker.ability.invis_rounds = 0 end
                     if type(copied_joker.ability.extra) == "table" and copied_joker.ability.extra.invis_rounds then copied_joker.ability.extra.invis_rounds = 0 end
                     return { message = localize('k_duplicated_ex') }
