@@ -590,9 +590,16 @@ SMODS.Voucher {
         end
         if context.modify_shop_card and
             (context.card.ability.set == 'Enhanced' or context.card.ability.set == 'Default') then -- is a playing card
-            if pseudorandom('vremade_illusion') > 0.8 then
+            if pseudorandom('vremade_illusion_edition_poll') > 0.8 then
                 context.card:set_edition(SMODS.poll_edition { key = 'vremade_illusion_edition', no_negative = true, guaranteed = true })
             end
+            --[[
+                Illusion doesn't actually apply seals in vanilla. Here's an example of how that would be done:
+                
+                if pseudorandom('vremade_illusion_seal_poll') > 0.8 then
+                    context.card:set_seal(SMODS.poll_seal{ key = 'vremade_illusion_seal', guaranteed = true })
+                end
+            ]]
         end
     end,
     redeem = function(self, card)
