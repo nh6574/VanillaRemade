@@ -582,6 +582,12 @@ SMODS.Voucher {
         return { vars = {} }
     end,
     calculate = function(self, card, context)
+        if context.create_shop_card and (context.set == "Base"
+                or context.set == "Enhanced") then -- we check for enhanced anyway so we don't overcorrect with other effects
+            return {
+                shop_create_flags = { set = "Playing Card", key_append = "vremade_illusion_enhancement" }
+            }
+        end
         if context.modify_shop_card and
             (context.card.ability.set == 'Enhanced' or context.card.ability.set == 'Default') then -- is a playing card
             if pseudorandom('vremade_illusion') > 0.8 then
