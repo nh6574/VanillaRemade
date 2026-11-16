@@ -473,7 +473,7 @@ SMODS.Blind {
 
         if context.setting_blind then
             blind.effect.hands_sub = G.GAME.round_resets.hands - 1
-            ease_hands_played(blind.effect.hands_sub)
+            ease_hands_played(-blind.effect.hands_sub)
         end
     end
 }
